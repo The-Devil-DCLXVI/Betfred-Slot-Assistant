@@ -1,0 +1,5388 @@
+/* =======================
+   Betfred Professional Startup-Match Theme (Show/Hide Fix)
+   ======================= */
+
+/* Firefox Text Rendering Fix - Ensures crisp text across all browsers */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+
+
+/* Standard Modal Header Structure - All panels should use this */
+.betfred-modal-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: transparent;
+  border-radius: 12px 12px 0 0;
+  min-height: 40px;
+}
+
+.betfred-modal-header .betfred-modal-title {
+  color: #ffd700;
+  font-size: 18px;
+  font-weight: 700 !important; /* Force bold for consistency */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; /* Cross-browser font consistency */
+  -webkit-font-smoothing: antialiased; /* Chrome/Safari font smoothing */
+  -moz-osx-font-smoothing: grayscale; /* Firefox font smoothing */
+  text-align: center;
+  flex: 1;
+  margin: 0;
+}
+
+.betfred-modal-header .betfred-close-btn {
+  background: none;
+  border: none;
+  color: #ffd700;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  margin: 0;
+  z-index: 10;
+}
+
+.betfred-modal-header .betfred-close-btn:hover {
+  background: linear-gradient(135deg, #ffd700 0%, #ffe066 100%);
+  color: #1a1a2e;
+  transform: scale(1.1);
+  box-shadow: 0 4px 16px rgba(255,215,0,0.3);
+}
+
+.betfred-modal-header .betfred-close-btn:active {
+  transform: scale(0.95);
+}
+
+/* RTP Text Styling */
+.betfred-rtp-text {
+  color: rgba(255, 215, 0, 0.7);
+  font-size: 0.9em;
+  font-weight: normal;
+}
+
+/* Dashboard Link Styles (from backup) */
+.betfred-dashboard-link { 
+  color: #8fa2c7; 
+  text-decoration: none; 
+  opacity: 0.7; 
+  transition: color 0.2s, opacity 0.2s, text-decoration 0.2s; 
+}
+.betfred-dashboard-link:hover { 
+  color: #1877f2; 
+  opacity: 1; 
+  text-decoration: none; 
+}
+.betfred-dashboard-link--no-underline, 
+.betfred-dashboard-link--no-underline:hover, 
+.betfred-dashboard-link--no-underline:focus { 
+  text-decoration: none !important; 
+}
+
+/* Instructions Popup Scrollbar Hiding */
+.betfred-instructions-popup * {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+.betfred-instructions-popup *::-webkit-scrollbar {
+  display: none !important;
+}
+
+/* Setup Modal Styles */
+.betfred-setup-btn {
+  background: linear-gradient(135deg, #ffd700 0%, #ffe066 100%);
+  color: #1a1a2e;
+  border: none;
+  padding: 15px 30px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+  margin-top: 20px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.betfred-setup-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+}
+
+.betfred-setup-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Setup Option Styles */
+.betfred-setup-option {
+  background: linear-gradient(135deg, #2a2a4e 0%, #1e2a4a 100%);
+  border: 2px solid #3a3a6e;
+  border-radius: 15px;
+  padding: 25px;
+  margin: 15px 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+.betfred-setup-option:hover {
+  border-color: #ffd700;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+}
+.betfred-setup-option.selected {
+  border-color: #ffd700;
+  background: linear-gradient(135deg, #3a3a6e 0%, #2a4a6e 100%);
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+}
+.betfred-setup-option h4 {
+  margin: 0 0 10px 0;
+  color: #ffd700;
+  font-size: 18px;
+  font-weight: 600;
+}
+.betfred-setup-option p {
+  margin: 0 0 15px 0;
+  color: #cccccc;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.betfred-setup-stats {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #888888;
+}
+
+/* Setup Title and Tip Styles */
+.betfred-setup-title {
+  margin: 0 0 10px 0;
+  color: #ffd700;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.betfred-setup-subtitle {
+  margin: 0;
+  color: #cccccc;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.betfred-setup-warning {
+  margin: 10px 0 0 0;
+  color: #ffd700;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.betfred-setup-tip {
+  margin-top: 20px;
+  font-size: 12px;
+  color: #888888;
+}
+
+.betfred-margin-bottom-30 {
+  margin-bottom: 30px;
+}
+
+/* Firefox Optimizations */
+.betfred-panel * {
+  transition: none !important;
+}
+.betfred-panel *:hover {
+  transition: all 0.1s ease !important;
+}
+
+/* Common Layout Classes */
+.betfred-flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 14px;
+}
+
+.betfred-flex-column {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.betfred-flex-gap-10 {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 14px;
+}
+
+.betfred-flex-gap-20 {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.betfred-flex-1 {
+  flex: 1;
+}
+
+.betfred-justify-center {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.betfred-text-center {
+  text-align: center;
+}
+
+.betfred-margin-bottom-10 {
+  margin-bottom: 10px;
+}
+
+.betfred-margin-bottom-12 {
+  margin-bottom: 12px;
+}
+
+.betfred-margin-bottom-18 {
+  margin-bottom: 18px;
+}
+
+.betfred-margin-bottom-20 {
+  margin-bottom: 20px;
+}
+
+.betfred-margin-bottom-24 {
+  margin-bottom: 24px;
+}
+
+.betfred-margin-top-20 {
+  margin-top: 20px;
+}
+
+.betfred-margin-top-12 {
+  margin-top: 12px;
+}
+
+/* Button Size Classes */
+.betfred-btn--small {
+  font-size: 13px;
+  padding: 8px 12px;
+}
+
+.betfred-btn--tiny {
+  font-size: 8px !important;
+  padding: 3px 6px !important;
+  min-height: 22px !important;
+  line-height: 1.1 !important;
+  white-space: nowrap !important;
+  max-width: 120px !important;
+}
+
+.betfred-btn--medium {
+  font-size: 14px;
+  padding: 10px 16px;
+}
+
+.betfred-btn--large {
+  font-size: 14px;
+  padding: 10px 24px;
+}
+
+/* Text Color Classes */
+.betfred-text-gold {
+  color: #ffd700;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.betfred-text-white {
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.betfred-text-gray {
+  color: #888888;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.betfred-text-light-gray {
+  color: #cccccc;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Classes */
+.betfred-heading-3 {
+  color: #ffd700;
+  margin-bottom: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.betfred-heading-4 {
+  color: #ffd700;
+  margin-bottom: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.betfred-paragraph {
+  margin-bottom: 16px;
+}
+
+.betfred-paragraph-small {
+  margin-bottom: 15px;
+  color: #cccccc;
+}
+
+/* Instructions Content */
+.betfred-instructions-content {
+  text-align: left;
+  line-height: 1.6;
+}
+
+/* Scrollbar Hiding for Instructions */
+.betfred-no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.betfred-no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Checkbox Styles */
+.betfred-checkbox-label {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+}
+
+.betfred-checkbox {
+  transform: scale(1.2);
+  accent-color: #ffd700;
+}
+
+/* Simple overlay styling - like the setup modal */
+.betfred-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+  z-index: 2147483647;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Main Panel, Popup, Modal, Side Panel, Confirm Box, Prompt */
+.betfred-panel, .betfred-popup, .betfred-modal, .betfred-side-panel, .betfred-confirm-box, .betfred-prompt {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border: 2px solid #ffd700;
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 900px;
+  width: 90%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  text-align: center;
+  z-index: 2147483648 !important;
+  /* display: block !important;  <-- REMOVED, let JS control visibility */
+}
+
+/* Manual add modal appears instantly without animation */
+.betfred-manual-add-modal {
+  animation: none !important;
+}
+
+@keyframes betfred-modal-slide-in {
+  from { 
+    opacity: 0; 
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  to { 
+    opacity: 1; 
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Ensure options panel has proper stacking context for dropdowns */
+#betfred-options-panel {
+  z-index: 2147483648 !important;
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+@keyframes betfred-modal-fade-in {
+  from { opacity: 0; transform: translate(-50%, -50%); }
+  to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+.betfred-confirm-box, .betfred-prompt {
+  padding: 32px 40px;
+  max-width: 400px;
+  width: 90%;
+  font-size: 16px;
+  text-align: center;
+}
+
+/* Option Cards (for settings, etc.) */
+.betfred-option-card {
+  background: linear-gradient(135deg, #2a2a4e 0%, #1e2a4a 100%);
+  border: 2px solid #3a3a6e;
+  border-radius: 15px;
+  padding: 25px;
+  margin: 15px 0;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+
+.betfred-option-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.betfred-option-card:hover::before {
+  left: 100%;
+}
+
+.betfred-option-card:hover {
+  border-color: #ffd700;
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(255, 215, 0, 0.25);
+}
+
+.betfred-option-card.selected {
+  border-color: #ffd700;
+  background: linear-gradient(135deg, #3a3a6e 0%, #2a4a6e 100%);
+  box-shadow: 0 15px 40px rgba(255, 215, 0, 0.35);
+  animation: betfred-card-selected 0.3s ease-out;
+}
+
+@keyframes betfred-card-selected {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.betfred-option-card h4 {
+  margin: 0 0 10px 0;
+  color: #ffd700;
+  font-size: 18px;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.betfred-option-card p {
+  margin: 0 0 15px 0;
+  color: #cccccc;
+  font-size: 14px;
+  line-height: 1.5;
+  transition: color 0.3s ease;
+}
+
+.betfred-option-card .betfred-setup-stats {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #888888;
+}
+
+/* Section Titles */
+.betfred-section-title {
+  color: #ffd700;
+  background: linear-gradient(90deg, #23244e 70%, transparent);
+  border-radius: 8px 8px 0 0;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  padding: 8px 0 6px 0;
+  letter-spacing: .02em;
+}
+
+/* Compact Mode - Hide section headers when enabled */
+.betfred-compact-mode .betfred-section-title {
+  display: none;
+}
+
+/* Buttons */
+.betfred-btn, .betfred-options-btn, .betfred-setup-btn {
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+  color: #1a1a2e;
+  border: none;
+  border-radius: 25px;
+  padding: 15px 40px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  margin-top: 20px;
+  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+  outline: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  position: relative;
+  overflow: hidden;
+}
+
+.betfred-btn::before, .betfred-options-btn::before, .betfred-setup-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.betfred-btn:hover::before, .betfred-options-btn:hover::before, .betfred-setup-btn:hover::before {
+  left: 100%;
+}
+
+.betfred-btn:hover, .betfred-options-btn:hover, .betfred-setup-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(255, 215, 0, 0.45);
+}
+
+.betfred-btn:active, .betfred-options-btn:active, .betfred-setup-btn:active {
+  transform: translateY(-1px) scale(0.98);
+  transition: all 0.1s ease;
+}
+.betfred-btn:disabled, .betfred-options-btn:disabled, .betfred-setup-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+
+
+/* Settings Panel Button Styles */
+#betfred-import-export-btn {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+}
+
+#betfred-import-export-btn:hover {
+  box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
+}
+
+#betfred-bulk-actions-btn {
+  background: linear-gradient(135deg, #dc3545 0%, #fd7e14 100%);
+  box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);
+}
+
+#betfred-bulk-actions-btn:hover {
+  box-shadow: 0 8px 25px rgba(220, 53, 69, 0.4);
+}
+
+#betfred-manual-add-btn {
+  background: linear-gradient(135deg, #ffc107 0%, #fd7e14 100%);
+  box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);
+}
+
+#betfred-manual-add-btn:hover {
+  box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
+}
+
+#betfred-instructions-btn {
+  background: linear-gradient(135deg, #17a2b8 0%, #6f42c1 100%);
+  box-shadow: 0 5px 15px rgba(23, 162, 184, 0.3);
+}
+
+#betfred-instructions-btn:hover {
+  box-shadow: 0 8px 25px rgba(23, 162, 184, 0.4);
+}
+
+#betfred-stats-btn {
+  background: linear-gradient(135deg, #6f42c1 0%, #8e44ad 100%);
+  box-shadow: 0 5px 15px rgba(111, 66, 193, 0.3);
+}
+
+#betfred-stats-btn:hover {
+  box-shadow: 0 8px 25px rgba(111, 66, 193, 0.4);
+}
+
+#betfred-custom-filter-btn {
+  background: linear-gradient(135deg, #e91e63 0%, #ad1457 100%);
+  box-shadow: 0 5px 15px rgba(233, 30, 99, 0.3);
+}
+
+#betfred-custom-filter-btn:hover {
+  box-shadow: 0 8px 25px rgba(233, 30, 99, 0.4);
+}
+
+#betfred-reset-btn {
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+  box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);
+}
+
+#betfred-reset-btn:hover {
+  box-shadow: 0 8px 25px rgba(220, 53, 69, 0.4);
+}
+
+#betfred-export-game-list-btn {
+  background: linear-gradient(135deg, #20c997 0%, #17a2b8 100%);
+  box-shadow: 0 5px 15px rgba(32, 201, 151, 0.3);
+}
+
+#betfred-export-game-list-btn:hover {
+  box-shadow: 0 8px 25px rgba(32, 201, 151, 0.4);
+}
+
+/* Toast Message */
+.betfred-toast {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  background: #222c44;
+  color: #ffd700;
+  border: 2px solid #ffd700;
+  border-radius: 18px;
+  font-size: 16px;
+  font-weight: bold;
+  z-index: 2147483652 !important;
+  box-shadow: 0 4px 16px 0 rgba(0,0,0,0.20);
+  opacity: 0.97;
+  transition: opacity .4s;
+  text-align: center;
+  pointer-events: none;
+  max-width: 90vw;
+  min-width: 180px;
+  padding: 16px 36px;
+}
+
+/* Stat Card */
+.betfred-stat-card {
+  background: linear-gradient(135deg, #23244e 0%, #1a1a2e 100%);
+  color: #ffd700;
+  border: 2px solid #ffd700;
+  border-radius: 15px;
+  box-shadow: 0 2px 8px 0 #FFD70033;
+  padding: 16px 10px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+/* Inputs */
+.betfred-input, .betfred-panel input[type="text"], .betfred-panel input[type="number"], .betfred-panel select, .betfred-popup input[type="text"], .betfred-popup input[type="number"], .betfred-popup select, .betfred-modal input[type="text"], .betfred-modal input[type="number"], .betfred-modal select {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 2px solid #ffd700;
+  font-size: 16px;
+  background: #23244e;
+  color: #ffd700;
+  box-sizing: border-box;
+  margin-bottom: 12px;
+  font-family: inherit;
+  transition: border 0.2s, background 0.2s;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+
+
+/* Placeholder text styling */
+.betfred-input::placeholder, .betfred-panel select::placeholder, .betfred-popup select::placeholder, .betfred-modal select::placeholder {
+  color: rgba(255, 215, 0, 0.8);
+  opacity: 1;
+  font-weight: 500;
+}
+
+/* Search box specific styling to avoid z-index conflicts */
+#betfred-game-search {
+  position: relative;
+}
+.betfred-input:focus, .betfred-panel input[type="text"]:focus, .betfred-panel input[type="number"]:focus, .betfred-panel select:focus, .betfred-popup input[type="text"]:focus, .betfred-popup input[type="number"]:focus, .betfred-popup select:focus, .betfred-modal input[type="text"]:focus, .betfred-modal input[type="number"]:focus, .betfred-modal select:focus {
+  border: 2px solid #ffe066;
+  outline: none;
+  background: #1a1a2e;
+  color: #ffd700;
+}
+
+/* Select specific styling for long text */
+.betfred-panel select, .betfred-popup select, .betfred-modal select {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffd700' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 40px;
+  width: 100%;
+  /* Prevent dropdown from expanding beyond container */
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+}
+
+/* Constrain dropdown width */
+.betfred-panel select:focus, .betfred-popup select:focus, .betfred-modal select:focus {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Game select specific styling */
+#betfred-game-select {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Constrain dropdown to select box width */
+#betfred-game-select:focus,
+#betfred-provider-select:focus {
+  width: 100% !important;
+  max-width: 100% !important;
+
+}
+
+/* Force options to match select width */
+#betfred-game-select option,
+#betfred-provider-select option {
+  box-sizing: border-box;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+/* For Firefox */
+.betfred-panel select:-moz-focusring, .betfred-popup select:-moz-focusring, .betfred-modal select:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #ffd700;
+}
+
+/* For Webkit browsers */
+.betfred-panel select::-ms-expand, .betfred-popup select::-ms-expand, .betfred-modal select::-ms-expand {
+  display: none;
+}
+
+.betfred-panel select option, .betfred-popup select option, .betfred-modal select option {
+  background: #23244e;
+  color: #ffd700;
+  padding: 8px 12px;
+  border: none;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  /* Force option width to match parent */
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+/* Action Row */
+.betfred-action-row {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+/* Header Icon Button & Close Button */
+.betfred-header-icon-btn, .betfred-close-btn {
+  background: none;
+  border: none;
+  color: #ffd700;
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 0 2px;
+  margin: 0 1px;
+  transition: color 0.2s, background 0.2s;
+  border-radius: 50%;
+  min-width: 32px;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.betfred-header-icon-btn:hover, .betfred-close-btn:hover, .betfred-header-icon-btn:focus, .betfred-close-btn:focus {
+  color: #1a1a2e;
+  background: #ffd700;
+  outline: none;
+}
+
+/* Filter Box Container */
+.betfred-filter-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+/* Top row - Filter buttons */
+.betfred-filter-box .filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Middle row - Min stake and game search */
+.betfred-filter-box .middle-row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Bottom row - Game provider, game search, and game select */
+.betfred-filter-box .bottom-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Ensure flex-1 works properly in the new rows */
+.betfred-filter-box .middle-row .betfred-flex-1,
+.betfred-filter-box .bottom-row .betfred-custom-select {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Make search box fixed width for 20 letters, provider and game select fill remaining space */
+.betfred-filter-box .middle-row .betfred-flex-1 {
+  width: 200px !important;
+  min-width: 200px !important;
+  max-width: 200px !important;
+  flex: none !important;
+}
+
+/* Ensure search box aligns perfectly with dropdowns */
+.betfred-filter-box .bottom-row .betfred-flex-1 input {
+  height: 100% !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  padding: 12px 16px !important;
+  border-radius: 10px !important;
+  border: 2px solid #ffd700 !important;
+  background: #23244e !important;
+  color: #ffd700 !important;
+  font-size: 16px !important;
+  min-height: 28px !important;
+}
+
+.betfred-filter-box .bottom-row .betfred-custom-select {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Enhanced Preferences Styling */
+.betfred-preferences-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+/* Invisible Scrollbars - Modern Clean Look */
+.betfred-panel,
+.betfred-popup,
+.betfred-modal,
+.betfred-side-panel,
+.betfred-confirm-box,
+.betfred-prompt,
+.betfred-overlay,
+.betfred-options-panel,
+.betfred-preferences-grid,
+.betfred-filter-box,
+.betfred-select-dropdown,
+.betfred-custom-select,
+.betfred-minstake-box,
+.betfred-flex-column,
+.betfred-flex-row,
+.betfred-section-block,
+.betfred-preference-category {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.betfred-panel::-webkit-scrollbar,
+.betfred-popup::-webkit-scrollbar,
+.betfred-modal::-webkit-scrollbar,
+.betfred-side-panel::-webkit-scrollbar,
+.betfred-confirm-box::-webkit-scrollbar,
+.betfred-prompt::-webkit-scrollbar,
+.betfred-overlay::-webkit-scrollbar,
+.betfred-options-panel::-webkit-scrollbar,
+.betfred-preferences-grid::-webkit-scrollbar,
+.betfred-filter-box::-webkit-scrollbar,
+.betfred-select-dropdown::-webkit-scrollbar,
+.betfred-custom-select::-webkit-scrollbar,
+.betfred-minstake-box::-webkit-scrollbar,
+.betfred-flex-column::-webkit-scrollbar,
+.betfred-flex-row::-webkit-scrollbar,
+.betfred-section-block::-webkit-scrollbar,
+.betfred-preference-category::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Ensure scroll functionality still works */
+.betfred-panel,
+.betfred-popup,
+.betfred-modal,
+.betfred-side-panel,
+.betfred-confirm-box,
+.betfred-prompt,
+.betfred-overlay,
+.betfred-options-panel {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.betfred-preference-category {
+  background: linear-gradient(135deg, rgba(30,34,60,0.4) 0%, rgba(22,33,62,0.4) 100%);
+  border: 1px solid rgba(255,215,0,0.2);
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+.betfred-preference-category:hover {
+  border-color: rgba(255,215,0,0.4);
+  background: linear-gradient(135deg, rgba(30,34,60,0.6) 0%, rgba(22,33,62,0.6) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+.betfred-category-title {
+  color: #ffd700;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 15px 0;
+  padding-bottom: 8px;
+  border-bottom: 2px solid rgba(255,215,0,0.3);
+  text-align: center;
+}
+
+.betfred-preference-item {
+  margin-bottom: 12px;
+  padding: 8px 0;
+}
+
+.betfred-preference-item:last-child {
+  margin-bottom: 0;
+}
+
+.betfred-preference-item .betfred-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  line-height: 1.4;
+}
+
+.betfred-preference-item .betfred-checkbox-label:hover {
+  color: #ffd700;
+}
+
+.betfred-preference-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #ffd700;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* Perfect Close Button */
+.betfred-close-btn {
+  position: absolute !important;
+  top: 12px !important;
+  right: 12px !important;
+  width: 32px !important;
+  height: 32px !important;
+  background: linear-gradient(135deg, rgba(30,34,60,0.9) 0%, rgba(22,33,62,0.9) 100%) !important;
+  border: 2px solid rgba(255,215,0,0.6) !important;
+  border-radius: 50% !important;
+  color: #ffd700 !important;
+  font-size: 18px !important;
+  font-weight: bold !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.3s ease !important;
+  z-index: 10 !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
+  backdrop-filter: blur(4px) !important;
+  line-height: 1 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+
+}
+
+
+
+.betfred-close-btn:hover {
+  background: linear-gradient(135deg, #ffd700 0%, #ffe066 100%) !important;
+  color: #1a1a2e !important;
+  border-color: #ffe066 !important;
+  transform: scale(1.1) !important;
+  box-shadow: 0 4px 16px rgba(255,215,0,0.3) !important;
+}
+.betfred-close-btn:active {
+  transform: scale(0.95) !important;
+}
+
+/* Header Close Button - for options panel header */
+.betfred-header-close-btn {
+  background: linear-gradient(135deg, rgba(30,34,60,0.9) 0%, rgba(22,33,62,0.9) 100%) !important;
+  border: 2px solid rgba(255,215,0,0.6) !important;
+  border-radius: 50% !important;
+  color: #ffd700 !important;
+  font-size: 16px !important;
+  font-weight: bold !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.3s ease !important;
+  width: 28px !important;
+  height: 28px !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
+  backdrop-filter: blur(4px) !important;
+  line-height: 1 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  flex-shrink: 0 !important;
+}
+
+/* Options Panel Header - Provides proper positioning context for all header elements */
+.betfred-options-panel .betfred-panel-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  min-height: 40px;
+}
+
+/* Left Group - Settings button container */
+.betfred-options-panel .betfred-panel-header > div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-width: 40px;
+  padding-left: 0;
+}
+
+/* Settings Button - Using flexbox instead of absolute positioning */
+#betfred-settings-btn {
+  background: none !important;
+  border: none !important;
+  font-size: 18px !important;
+  cursor: pointer !important;
+  width: 24px !important;
+  height: 24px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 4px !important;
+  transition: background 0.2s !important;
+  z-index: 10 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Center Group - Main header content */
+.betfred-options-panel .betfred-panel-header > div:nth-child(2) {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  flex: 1;
+}
+
+/* Right Group - Close button container */
+.betfred-options-panel .betfred-panel-header > div:last-child {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 40px;
+}
+
+.betfred-header-close-btn:hover {
+  background: linear-gradient(135deg, #ffd700 0%, #ffe066 100%) !important;
+  color: #1a1a2e !important;
+  border-color: #ffe066 !important;
+  transform: scale(1.1) !important;
+  box-shadow: 0 4px 16px rgba(255,215,0,0.3) !important;
+}
+.betfred-header-close-btn:active {
+  transform: scale(0.95) !important;
+}
+
+.betfred-filter-box .betfred-filter-btn {
+  background: linear-gradient(135deg, rgba(30,34,60,0.92) 60%, #23244e 100%);
+  border: 2px solid rgba(255,215,0,0.55);
+  color: #ffd700;
+  font-size: 16px;
+  border-radius: 999px;
+  padding: 8px 16px 8px 16px;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.13);
+  opacity: 0.85;
+  transition: background 0.18s, color 0.18s, opacity 0.18s, box-shadow 0.18s, border-color 0.18s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  cursor: pointer;
+  font-weight: 600;
+  margin: 0 4px 4px 0;
+  min-width: 0;
+  flex: 0 1 auto;
+  user-select: none;
+}
+.betfred-filter-box .betfred-filter-btn.active,
+.betfred-filter-box .betfred-filter-btn:focus,
+.betfred-filter-box .betfred-filter-btn:hover {
+  background: linear-gradient(135deg, #ffd700 0%, #ffe066 100%);
+  color: #23244e;
+  opacity: 1;
+  border-color: #ffe066;
+  box-shadow: 0 4px 18px 0 rgba(255,215,0,0.18);
+}
+
+.betfred-filter-box .betfred-filter-btn:not(.active) {
+  border-color: rgba(255,215,0,0.55);
+  opacity: 0.85;
+  background: linear-gradient(135deg, rgba(30,34,60,0.92) 60%, #23244e 100%);
+  color: #ffd700;
+}
+
+/* Separate hover effect for game filter buttons (same as min stake) */
+.betfred-filter-box .betfred-filter-btn:not(.active):hover {
+  opacity: 1;
+  border-color: #ffe066;
+}
+
+/* Responsive for mobile */
+@media (max-width: 600px) {
+  .betfred-panel, .betfred-popup, .betfred-modal, .betfred-side-panel {
+    padding: 18px 4vw;
+    font-size: 15px;
+  border-radius: 12px;
+    min-width: 0;
+    max-width: 95%;
+  }
+  .betfred-confirm-box, .betfred-prompt {
+    padding: 12px 2vw;
+    font-size: 15px;
+    border-radius: 12px;
+  }
+  .betfred-section-title {
+    font-size: 16px;
+    padding: 6px 0 4px 0;
+  }
+  .betfred-btn, .betfred-options-btn, .betfred-setup-btn {
+    padding: 10px 12px;
+    font-size: 15px;
+    border-radius: 16px;
+  }
+  .betfred-stat-card {
+    font-size: 15px;
+    padding: 10px 6px;
+    border-radius: 10px;
+  }
+  .betfred-input, .betfred-panel input[type="text"], .betfred-panel input[type="number"], .betfred-panel select, .betfred-popup input[type="text"], .betfred-popup input[type="number"], .betfred-popup select, .betfred-modal input[type="text"], .betfred-modal input[type="number"], .betfred-modal select {
+    font-size: 15px;
+    padding: 8px 8px;
+    border-radius: 8px;
+  }
+}
+
+.betfred-minstake-box {
+  display: flex;
+  gap: 8px;
+  flex-wrap: nowrap;
+  align-items: center;
+  margin-left: 0;
+  margin-bottom: 0;
+  }
+.betfred-minstake-box label {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  cursor: pointer;
+}
+.betfred-minstake-box input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.betfred-minstake-box label {
+  background: linear-gradient(135deg, rgba(30,34,60,0.92) 60%, #23244e 100%);
+  border: 2px solid rgba(255,215,0,0.55);
+  color: #ffd700;
+  font-size: 15px;
+  border-radius: 999px;
+  padding: 7px 18px 7px 18px;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.13);
+  opacity: 0.85;
+  transition: background 0.18s, color 0.18s, opacity 0.18s, box-shadow 0.18s, border-color 0.18s;
+  font-weight: 600;
+  margin: 0 4px 4px 0;
+  min-width: 0;
+  flex: 0 1 auto;
+  user-select: none;
+  }
+.betfred-minstake-box input[type="checkbox"]:checked + label,
+.betfred-minstake-box label:has(input[type="checkbox"]:checked) {
+  background: linear-gradient(135deg, #ffd700 0%, #ffe066 100%);
+  color: #23244e;
+  opacity: 1;
+  border-color: #ffe066;
+  box-shadow: 0 4px 18px 0 rgba(255,215,0,0.18);
+}
+.betfred-minstake-box label:hover {
+  opacity: 1;
+  border-color: #ffe066;
+}
+
+.betfred-options-btn {
+  -moz-box-align: center !important;
+  -moz-box-pack: center !important;
+  border-radius: 100px !important;
+  min-width: 55px !important;
+  height: 28px !important;
+  line-height: 26px !important;
+  font-size: 11px !important;
+  text-align: center !important;
+  margin: 0px 4px !important;
+  text-decoration: none !important;
+  padding: 0px 8px !important;
+  box-sizing: border-box !important;
+  cursor: pointer !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  white-space: nowrap !important;
+  box-shadow: none !important;
+  background: rgba(255, 255, 255, 0) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  color: rgb(255, 255, 255) !important;
+  font-family: Inter Tight, sans-serif !important;
+  font-weight: 600 !important;
+  font-optical-sizing: auto !important;
+  font-style: normal !important;
+  letter-spacing: 0.03em !important;
+}
+
+.betfred-options-btn:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Loading animation for options button */
+@keyframes betfred-loading-pulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 0.4; }
+}
+
+.betfred-options-btn:disabled {
+  cursor: not-allowed !important;
+  background: rgb(100, 100, 100) !important;
+  animation: betfred-loading-pulse 1.5s ease-in-out infinite !important;
+}
+
+/* Bingo Domain Specific Button Styling */
+body[data-betfred-bingo="true"] .betfred-options-btn,
+body[data-betfred-bingo="true"] .betfred-btn {
+  position: relative;
+  cursor: pointer;
+  display: block;
+  padding: 5px 35px 5px 5px;
+  border-radius: 0;
+  background: #FFF;
+  color: #1a1a2e;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  font-weight: 500;
+  margin-right: 8px;
+  min-height: 36px;
+  line-height: 26px;
+}
+
+body[data-betfred-bingo="true"] .betfred-options-btn:hover,
+body[data-betfred-bingo="true"] .betfred-btn:hover {
+  background: #f8f9fa;
+  transform: none;
+  box-shadow: none;
+}
+
+body[data-betfred-bingo="true"] .betfred-options-btn:active,
+body[data-betfred-bingo="true"] .betfred-btn:active {
+  background: #e9ecef;
+  transform: none;
+}
+
+@media (min-width: 1025px) {
+  .betfred-options-btn {
+    height: 36px !important;
+    line-height: 34px !important;
+    min-width: 80px !important;
+    font-size: 14px !important;
+  }
+}
+
+/* Random game button in options panel - vibrant and exciting */
+#betfred-random-btn {
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ffd700 100%) !important;
+  color: #1a1a2e !important;
+  border: 3px solid #ff8c42 !important;
+  padding: 12px 28px !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  border-radius: 25px !important;
+  margin-top: 0 !important;
+  min-width: 0 !important;
+  height: auto !important;
+  line-height: 1.2 !important;
+  box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4), 0 0 20px rgba(255, 215, 0, 0.3) !important;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Provider text styling - make it less bold and slightly smaller */
+#betfred-random-btn .provider-text {
+  font-weight: 400 !important;
+  font-size: 13px !important;
+  opacity: 0.8 !important;
+  font-style: italic !important;
+}
+
+/* Random button color themes - Hidden feature */
+#betfred-random-btn.theme-purple {
+  background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 50%, #c084fc 100%) !important;
+  border: 3px solid #a855f7 !important;
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4), 0 0 20px rgba(168, 85, 247, 0.3) !important;
+}
+
+#betfred-random-btn.theme-purple:hover {
+  background: linear-gradient(135deg, #a855f7 0%, #c084fc 50%, #d8b4fe 100%) !important;
+  border-color: #c084fc !important;
+  box-shadow: 0 10px 30px rgba(139, 92, 246, 0.6), 0 0 30px rgba(168, 85, 247, 0.5) !important;
+}
+
+#betfred-random-btn.theme-blue {
+  background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 50%, #93c5fd 100%) !important;
+  border: 3px solid #60a5fa !important;
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4), 0 0 20px rgba(96, 165, 250, 0.3) !important;
+}
+
+#betfred-random-btn.theme-blue:hover {
+  background: linear-gradient(135deg, #60a5fa 0%, #93c5fd 50%, #bfdbfe 100%) !important;
+  border-color: #93c5fd !important;
+  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.6), 0 0 30px rgba(96, 165, 250, 0.5) !important;
+}
+
+#betfred-random-btn.theme-green {
+  background: linear-gradient(135deg, #10b981 0%, #34d399 50%, #6ee7b7 100%) !important;
+  border: 3px solid #34d399 !important;
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4), 0 0 20px rgba(52, 211, 153, 0.3) !important;
+}
+
+#betfred-random-btn.theme-green:hover {
+  background: linear-gradient(135deg, #34d399 0%, #6ee7b7 50%, #a7f3d0 100%) !important;
+  border-color: #6ee7b7 !important;
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.6), 0 0 30px rgba(52, 211, 153, 0.5) !important;
+}
+
+#betfred-random-btn.theme-red {
+  background: linear-gradient(135deg, #ef4444 0%, #f87171 50%, #fca5a5 100%) !important;
+  border: 3px solid #f87171 !important;
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4), 0 0 20px rgba(248, 113, 113, 0.3) !important;
+}
+
+#betfred-random-btn.theme-red:hover {
+  background: linear-gradient(135deg, #f87171 0%, #fca5a5 50%, #fecaca 100%) !important;
+  border-color: #fca5a5 !important;
+  box-shadow: 0 10px 30px rgba(239, 68, 68, 0.6), 0 0 30px rgba(248, 113, 113, 0.5) !important;
+}
+
+#betfred-random-btn.theme-orange {
+  background: linear-gradient(135deg, #f97316 0%, #fb923c 50%, #fdba74 100%) !important;
+  border: 3px solid #fb923c !important;
+  box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4), 0 0 20px rgba(251, 146, 60, 0.3) !important;
+}
+
+#betfred-random-btn.theme-orange:hover {
+  background: linear-gradient(135deg, #fb923c 0%, #fdba74 50%, #fed7aa 100%) !important;
+  border-color: #fdba74 !important;
+  box-shadow: 0 10px 30px rgba(249, 115, 22, 0.6), 0 0 30px rgba(251, 146, 60, 0.5) !important;
+}
+
+#betfred-random-btn.theme-pink {
+  background: linear-gradient(135deg, #ec4899 0%, #f472b6 50%, #f9a8d4 100%) !important;
+  border: 3px solid #f472b6 !important;
+  box-shadow: 0 6px 20px rgba(236, 72, 153, 0.4), 0 0 20px rgba(244, 114, 182, 0.3) !important;
+}
+
+#betfred-random-btn.theme-pink:hover {
+  background: linear-gradient(135deg, #f472b6 0%, #f9a8d4 50%, #fbcfe8 100%) !important;
+  border-color: #f9a8d4 !important;
+  box-shadow: 0 10px 30px rgba(236, 72, 153, 0.6), 0 0 30px rgba(244, 114, 182, 0.5) !important;
+}
+
+#betfred-random-btn.theme-cyan {
+  background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 50%, #67e8f9 100%) !important;
+  border: 3px solid #22d3ee !important;
+  box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4), 0 0 20px rgba(34, 211, 238, 0.3) !important;
+}
+
+#betfred-random-btn.theme-cyan:hover {
+  background: linear-gradient(135deg, #22d3ee 0%, #67e8f9 50%, #a5f3fc 100%) !important;
+  border-color: #67e8f9 !important;
+  box-shadow: 0 10px 30px rgba(6, 182, 212, 0.6), 0 0 30px rgba(34, 211, 238, 0.5) !important;
+}
+
+#betfred-random-btn.theme-indigo {
+  background: linear-gradient(135deg, #6366f1 0%, #818cf8 50%, #a5b4fc 100%) !important;
+  border: 3px solid #818cf8 !important;
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4), 0 0 20px rgba(129, 140, 248, 0.3) !important;
+}
+
+#betfred-random-btn.theme-indigo:hover {
+  background: linear-gradient(135deg, #818cf8 0%, #a5b4fc 50%, #c7d2fe 100%) !important;
+  border-color: #a5b4fc !important;
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.6), 0 0 30px rgba(129, 140, 248, 0.5) !important;
+}
+
+/* New Theme: Teal */
+#betfred-random-btn.theme-teal {
+  background: linear-gradient(135deg, #0d9488 0%, #14b8a6 50%, #5eead4 100%) !important;
+  border: 3px solid #14b8a6 !important;
+  box-shadow: 0 6px 20px rgba(13, 148, 136, 0.4), 0 0 20px rgba(20, 184, 166, 0.3) !important;
+}
+
+#betfred-random-btn.theme-teal:hover {
+  background: linear-gradient(135deg, #14b8a6 0%, #5eead4 50%, #99f6e4 100%) !important;
+  border-color: #5eead4 !important;
+  box-shadow: 0 10px 30px rgba(13, 148, 136, 0.6), 0 0 30px rgba(20, 184, 166, 0.5) !important;
+}
+
+/* New Theme: Lime */
+#betfred-random-btn.theme-lime {
+  background: linear-gradient(135deg, #65a30d 0%, #84cc16 50%, #a3e635 100%) !important;
+  border: 3px solid #84cc16 !important;
+  box-shadow: 0 6px 20px rgba(101, 163, 13, 0.4), 0 0 20px rgba(132, 204, 22, 0.3) !important;
+}
+
+#betfred-random-btn.theme-lime:hover {
+  background: linear-gradient(135deg, #84cc16 0%, #a3e635 50%, #bef264 100%) !important;
+  border-color: #a3e635 !important;
+  box-shadow: 0 10px 30px rgba(101, 163, 13, 0.6), 0 0 30px rgba(132, 204, 22, 0.5) !important;
+}
+
+/* New Theme: Amber */
+#betfred-random-btn.theme-amber {
+  background: linear-gradient(135deg, #d97706 0%, #f59e0b 50%, #fbbf24 100%) !important;
+  border: 3px solid #f59e0b !important;
+  box-shadow: 0 6px 20px rgba(217, 119, 6, 0.4), 0 0 20px rgba(245, 158, 11, 0.3) !important;
+}
+
+#betfred-random-btn.theme-amber:hover {
+  background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #fcd34d 100%) !important;
+  border-color: #fbbf24 !important;
+  box-shadow: 0 10px 30px rgba(217, 119, 6, 0.6), 0 0 30px rgba(245, 158, 11, 0.5) !important;
+}
+
+/* New Theme: Rose */
+#betfred-random-btn.theme-rose {
+  background: linear-gradient(135deg, #e11d48 0%, #f43f5e 50%, #fb7185 100%) !important;
+  border: 3px solid #f43f5e !important;
+  box-shadow: 0 6px 20px rgba(225, 29, 72, 0.4), 0 0 20px rgba(244, 63, 94, 0.3) !important;
+}
+
+#betfred-random-btn.theme-rose:hover {
+  background: linear-gradient(135deg, #f43f5e 0%, #fb7185 50%, #fda4af 100%) !important;
+  border-color: #fb7185 !important;
+  box-shadow: 0 10px 30px rgba(225, 29, 72, 0.6), 0 0 30px rgba(244, 63, 94, 0.5) !important;
+}
+
+/* New Theme: Violet */
+#betfred-random-btn.theme-violet {
+  background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 50%, #a78bfa 100%) !important;
+  border: 3px solid #8b5cf6 !important;
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.4), 0 0 20px rgba(139, 92, 246, 0.3) !important;
+}
+
+#betfred-random-btn.theme-violet:hover {
+  background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 50%, #c4b5fd 100%) !important;
+  border-color: #a78bfa !important;
+  box-shadow: 0 10px 30px rgba(124, 58, 237, 0.6), 0 0 30px rgba(139, 92, 246, 0.5) !important;
+}
+
+#betfred-random-btn::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent) !important;
+  transition: left 0.8s ease !important;
+}
+
+
+
+#betfred-random-btn:hover {
+  background: linear-gradient(135deg, #ff8c42 0%, #ffd700 50%, #ffed4e 100%) !important;
+  border-color: #ffd700 !important;
+  transform: translateY(-3px) scale(1.05) !important;
+  box-shadow: 0 10px 30px rgba(255, 107, 53, 0.6), 0 0 30px rgba(255, 215, 0, 0.5) !important;
+}
+
+#betfred-random-btn:hover::before {
+  left: 100% !important;
+}
+
+
+
+#betfred-random-btn:active {
+  transform: translateY(-1px) scale(0.98) !important;
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4), 0 0 15px rgba(255, 215, 0, 0.3) !important;
+}
+
+/* Lightning bolt icon colors for each theme */
+#betfred-random-btn .lightning-icon {
+  color: #ffd700 !important;
+}
+
+#betfred-random-btn.theme-purple .lightning-icon {
+  color: #c084fc !important;
+}
+
+#betfred-random-btn.theme-blue .lightning-icon {
+  color: #93c5fd !important;
+}
+
+#betfred-random-btn.theme-green .lightning-icon {
+  color: #6ee7b7 !important;
+}
+
+/* Lightning bolt icon in section title - changes color with theme */
+#theme-cycle-lightning {
+  color: #ffd700 !important;
+  transition: all 0.3s ease !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+#theme-cycle-lightning svg {
+  width: 20px !important;
+  height: 20px !important;
+  fill: currentColor !important;
+  transition: all 0.3s ease !important;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3)) !important;
+}
+
+#theme-cycle-lightning:hover svg {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4)) !important;
+  transform: scale(1.1) !important;
+}
+
+/* Override section title color inheritance with more specific selectors */
+#betfred-options-panel .betfred-section-title #theme-cycle-lightning.theme-purple {
+  color: #c084fc !important;
+}
+
+#betfred-options-panel .betfred-section-title #theme-cycle-lightning.theme-blue {
+  color: #93c5fd !important;
+}
+
+#betfred-options-panel .betfred-section-title #theme-cycle-lightning.theme-green {
+  color: #6ee7b7 !important;
+}
+
+#betfred-options-panel .betfred-section-title #theme-cycle-lightning.theme-red {
+  color: #fca5a5 !important;
+}
+
+#betfred-options-panel .betfred-section-title #theme-cycle-lightning.theme-orange {
+  color: #fdba74 !important;
+}
+
+#betfred-options-panel .betfred-section-title #theme-cycle-lightning.theme-pink {
+  color: #f9a8d4 !important;
+}
+
+#betfred-options-panel .betfred-section-title #theme-cycle-lightning.theme-cyan {
+  color: #67e8f9 !important;
+}
+
+#betfred-options-panel .betfred-section-title #theme-cycle-lightning.theme-indigo {
+  color: #a5b4fc !important;
+}
+
+#betfred-options-panel .betfred-section-title #theme-cycle-lightning.theme-teal {
+  color: #5eead4 !important;
+}
+
+#betfred-options-panel .betfred-section-title #theme-cycle-lightning.theme-lime {
+  color: #a3e635 !important;
+}
+
+#betfred-options-panel .betfred-section-title #theme-cycle-lightning.theme-amber {
+  color: #fbbf24 !important;
+}
+
+#betfred-options-panel .betfred-section-title #theme-cycle-lightning.theme-rose {
+  color: #fb7185 !important;
+}
+
+#betfred-options-panel .betfred-section-title #theme-cycle-lightning.theme-violet {
+  color: #a78bfa !important;
+}
+
+/* Floating random game button - Betfred native styling */
+#betfred-floating-random-btn {
+  -moz-box-align: center !important;
+  -moz-box-pack: center !important;
+  border-radius: 100px !important;
+  min-width: 55px !important;
+  height: 28px !important;
+  line-height: 26px !important;
+  font-size: 11px !important;
+  text-align: center !important;
+  margin: 0px 4px !important;
+  text-decoration: none !important;
+  padding: 0px 8px !important;
+  box-sizing: border-box !important;
+  cursor: pointer !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  white-space: nowrap !important;
+  box-shadow: none !important;
+  background: rgba(255, 255, 255, 0) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  color: rgb(255, 255, 255) !important;
+  font-family: Inter Tight, sans-serif !important;
+  font-weight: 600 !important;
+  font-optical-sizing: auto !important;
+  font-style: normal !important;
+  letter-spacing: 0.03em !important;
+}
+
+#betfred-floating-random-btn:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Lightning bolt icon colors for floating random button */
+#betfred-floating-random-btn .lightning-icon {
+  color: #ffffff !important;
+}
+
+@media (min-width: 1025px) {
+  #betfred-floating-random-btn {
+    height: 36px !important;
+    line-height: 34px !important;
+    min-width: 80px !important;
+    font-size: 14px !important;
+  }
+}
+
+/* Modal Title Styling */
+.betfred-modal-title {
+  color: #ffd700 !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; /* Cross-browser font consistency */
+  -webkit-font-smoothing: antialiased !important; /* Chrome/Safari font smoothing */
+  -moz-osx-font-smoothing: grayscale !important; /* Firefox font smoothing */
+  letter-spacing: .02em !important;
+  margin-bottom: 20px !important;
+}
+
+/* Manual Add Game Modal Styling */
+#betfred-manual-add-overlay-paste {
+  width: 100% !important;
+  height: 160px !important;
+  resize: none !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  padding: 16px !important;
+  box-sizing: border-box !important;
+  font-family: inherit !important;
+  transition: border 0.2s, background 0.2s !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(255, 215, 0, 0.3) transparent !important;
+}
+
+#betfred-manual-add-overlay-paste::-webkit-scrollbar {
+  width: 6px !important;
+}
+
+#betfred-manual-add-overlay-paste::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+#betfred-manual-add-overlay-paste::-webkit-scrollbar-thumb {
+  background: rgba(255, 215, 0, 0.3) !important;
+  border-radius: 3px !important;
+}
+
+#betfred-manual-add-overlay-paste::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 215, 0, 0.5) !important;
+}
+
+#betfred-manual-add-overlay-paste:focus {
+  border-color: #ffe066 !important;
+  background: #1a1a2e !important;
+  outline: none !important;
+}
+
+#betfred-manual-add-overlay-paste::placeholder {
+  color: rgba(255, 255, 255, 0.5) !important;
+  opacity: 1 !important;
+}
+
+/* Manual Add Game Input Styling */
+#betfred-manual-add-title,
+#betfred-manual-add-minstake,
+#betfred-manual-add-rtp,
+#betfred-manual-add-url {
+  background: #23244e !important;
+  border: 2px solid #ffd700 !important;
+  border-radius: 10px !important;
+  color: #ffd700 !important;
+  font-size: 16px !important;
+  padding: 10px 14px !important;
+  box-sizing: border-box !important;
+  transition: border 0.2s, background 0.2s !important;
+  font-family: inherit !important;
+}
+
+
+
+#betfred-manual-add-title:focus,
+#betfred-manual-add-minstake:focus,
+#betfred-manual-add-rtp:focus,
+#betfred-manual-add-url:focus {
+  border-color: #ffe066 !important;
+  background: #1a1a2e !important;
+  outline: none !important;
+}
+
+#betfred-manual-add-title::placeholder,
+#betfred-manual-add-url::placeholder {
+  color: rgba(255, 215, 0, 0.8) !important;
+  opacity: 1 !important;
+}
+
+/* Manual Add Game Provider Select Styling */
+#betfred-manual-add-provider {
+  background: #23244e !important;
+  border: 2px solid #ffd700 !important;
+  border-radius: 10px !important;
+  color: #ffd700 !important;
+  font-size: 16px !important;
+  padding: 10px 14px !important;
+  box-sizing: border-box !important;
+  transition: border 0.2s, background 0.2s !important;
+  font-family: inherit !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffd700' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 12px center !important;
+  background-size: 16px !important;
+  padding-right: 40px !important;
+}
+
+#betfred-manual-add-provider:focus {
+  border-color: #ffe066 !important;
+  background: #1a1a2e !important;
+  outline: none !important;
+  z-index: 1000003 !important;
+}
+
+#betfred-manual-add-provider option {
+  background: #23244e !important;
+  color: #ffd700 !important;
+  padding: 8px 12px !important;
+  border: none !important;
+  font-size: 14px !important;
+}
+
+/* Manual Add Game Label Styling */
+#betfred-manual-add-overlay label {
+  color: #ffd700 !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  margin-bottom: 6px !important;
+  display: inline !important;
+}
+
+/* Bulk Game Selection Styling */
+.betfred-game-item {
+  background: rgba(30,34,60,0.3) !important;
+  border-radius: 6px !important;
+  margin-bottom: 4px !important;
+}
+
+.betfred-game-item:hover {
+  background: rgba(30,34,60,0.5) !important;
+}
+
+.betfred-game-item.selected {
+  background: #ffd700 !important;
+  color: #1a1a2e !important;
+  font-weight: 600 !important;
+}
+
+/* Custom scrollbar for game list container */
+#betfred-keyword-game-list {
+  scrollbar-width: thin !important;
+  scrollbar-color: #ffd700 #23244e !important;
+}
+
+/* Firefox-specific optimizations */
+@-moz-document url-prefix() {
+      .betfred-panel, .betfred-popup, .betfred-modal {
+      will-change: transform, opacity;
+    }
+  
+  .betfred-btn, .betfred-filter-btn {
+    will-change: transform;
+  }
+  
+  .betfred-overlay {
+    backdrop-filter: blur(4px);
+    -moz-backdrop-filter: blur(4px);
+  }
+  
+  /* Firefox scrollbar optimizations */
+  .betfred-select-dropdown {
+    scrollbar-width: thin;
+    scrollbar-color: #ffd700 #23244e;
+  }
+  
+  /* Firefox animation performance */
+  .betfred-modal-fade-in {
+    animation: betfred-modal-fade-in 0.3s ease-out;
+    -moz-animation: betfred-modal-fade-in 0.3s ease-out;
+  }
+}
+
+#betfred-keyword-game-list::-webkit-scrollbar {
+  width: 8px !important;
+}
+
+#betfred-keyword-game-list::-webkit-scrollbar-track {
+  background: #23244e !important;
+  border-radius: 4px !important;
+}
+
+#betfred-keyword-game-list::-webkit-scrollbar-thumb {
+  background: #ffd700 !important;
+  border-radius: 4px !important;
+  border: 1px solid #23244e !important;
+}
+
+#betfred-keyword-game-list::-webkit-scrollbar-thumb:hover {
+  background: #ffe066 !important;
+}
+
+/* Custom scrollbar for provider selection panel */
+.betfred-provider-selection-list {
+  scrollbar-width: thin !important;
+  scrollbar-color: #ffd700 #23244e !important;
+}
+
+.betfred-provider-selection-list::-webkit-scrollbar {
+  width: 8px !important;
+}
+
+.betfred-provider-selection-list::-webkit-scrollbar-track {
+  background: #23244e !important;
+  border-radius: 4px !important;
+}
+
+.betfred-provider-selection-list::-webkit-scrollbar-thumb {
+  background: #ffd700 !important;
+  border-radius: 4px !important;
+  border: 1px solid #23244e !important;
+}
+
+.betfred-provider-selection-list::-webkit-scrollbar-thumb:hover {
+  background: #ffe066 !important;
+}
+
+/* Custom scrollbar for instructions panel - HIDDEN */
+.betfred-instructions-popup {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.betfred-instructions-popup::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+}
+
+.betfred-instructions-popup::-webkit-scrollbar-track {
+  display: none !important;
+}
+
+.betfred-instructions-popup::-webkit-scrollbar-thumb {
+  display: none !important;
+}
+
+.betfred-instructions-popup::-webkit-scrollbar-thumb:hover {
+  display: none !important;
+}
+
+/* Custom scrollbar for reset maintenance panel - HIDDEN */
+.betfred-modal[style*="overflow-y: auto"] {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.betfred-modal[style*="overflow-y: auto"]::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+}
+
+.betfred-modal[style*="overflow-y: auto"]::-webkit-scrollbar-track {
+  display: none !important;
+}
+
+.betfred-modal[style*="overflow-y: auto"]::-webkit-scrollbar-thumb {
+  display: none !important;
+}
+
+.betfred-modal[style*="overflow-y: auto"]::-webkit-scrollbar-thumb:hover {
+  display: none !important;
+}
+
+/* Custom scrollbar for custom filter panel - HIDDEN */
+#betfred-custom-filter-overlay .betfred-modal {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+  z-index: 1000001 !important; /* Ensure it's lower than toast */
+}
+
+#betfred-custom-filter-overlay .betfred-modal::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+}
+
+#betfred-custom-filter-overlay .betfred-modal::-webkit-scrollbar-track {
+  display: none !important;
+}
+
+#betfred-custom-filter-overlay .betfred-modal::-webkit-scrollbar-thumb {
+  display: none !important;
+}
+
+#betfred-custom-filter-overlay .betfred-modal::-webkit-scrollbar-thumb:hover {
+  display: none !important;
+}
+
+/* Custom scrollbar for game lists in filter modals - VERTICAL ONLY */
+#betfred-game-list,
+#betfred-game-list-builtin,
+#betfred-keyword-game-list,
+#betfred-filter-preview-games,
+#betfred-all-favorites-panel .betfred-all-games-list,
+#betfred-removed-games-panel .betfred-all-games-list,
+#betfred-full-providers-panel .betfred-full-providers-list,
+#betfred-full-most-played-panel .betfred-full-most-played-list,
+#betfred-all-games-panel .betfred-all-games-list,
+#betfred-rtp-extremes-panel .betfred-rtp-games-list {
+  scrollbar-width: thin !important;
+  scrollbar-color: #ffd700 #23244e !important;
+  overflow-x: hidden !important;
+}
+
+#betfred-game-list::-webkit-scrollbar,
+#betfred-game-list-builtin::-webkit-scrollbar,
+#betfred-keyword-game-list::-webkit-scrollbar,
+#betfred-filter-preview-games::-webkit-scrollbar,
+#betfred-all-favorites-panel .betfred-all-games-list::-webkit-scrollbar,
+#betfred-removed-games-panel .betfred-all-games-list::-webkit-scrollbar,
+#betfred-full-providers-panel .betfred-full-providers-list::-webkit-scrollbar,
+#betfred-full-most-played-panel .betfred-full-most-played-list::-webkit-scrollbar,
+#betfred-all-games-panel .betfred-all-games-list::-webkit-scrollbar,
+#betfred-rtp-extremes-panel .betfred-rtp-games-list::-webkit-scrollbar {
+  width: 8px !important;
+  height: 0 !important;
+}
+
+#betfred-game-list::-webkit-scrollbar-track,
+#betfred-game-list-builtin::-webkit-scrollbar-track,
+#betfred-keyword-game-list::-webkit-scrollbar-track,
+#betfred-filter-preview-games::-webkit-scrollbar-track,
+#betfred-all-favorites-panel .betfred-all-games-list::-webkit-scrollbar-track,
+#betfred-removed-games-panel .betfred-all-games-list::-webkit-scrollbar-track,
+#betfred-full-providers-panel .betfred-full-providers-list::-webkit-scrollbar-track,
+#betfred-full-most-played-panel .betfred-full-most-played-list::-webkit-scrollbar-track,
+#betfred-all-games-panel .betfred-all-games-list::-webkit-scrollbar-track,
+#betfred-rtp-extremes-panel .betfred-rtp-games-list::-webkit-scrollbar-track {
+  background: #23244e !important;
+  border-radius: 4px !important;
+}
+
+#betfred-game-list::-webkit-scrollbar-thumb,
+#betfred-game-list-builtin::-webkit-scrollbar-thumb,
+#betfred-keyword-game-list::-webkit-scrollbar-thumb,
+#betfred-filter-preview-games::-webkit-scrollbar-thumb,
+#betfred-all-favorites-panel .betfred-all-games-list::-webkit-scrollbar-thumb,
+#betfred-removed-games-panel .betfred-all-games-list::-webkit-scrollbar-thumb,
+#betfred-full-providers-panel .betfred-full-providers-list::-webkit-scrollbar-thumb,
+#betfred-full-most-played-panel .betfred-full-most-played-list::-webkit-scrollbar-thumb,
+#betfred-all-games-panel .betfred-all-games-list::-webkit-scrollbar-thumb,
+#betfred-rtp-extremes-panel .betfred-rtp-games-list::-webkit-scrollbar-thumb {
+  background: #ffd700 !important;
+  border-radius: 4px !important;
+  border: 1px solid #23244e !important;
+}
+
+#betfred-game-list::-webkit-scrollbar-thumb:hover,
+#betfred-game-list-builtin::-webkit-scrollbar-thumb:hover,
+#betfred-keyword-game-list::-webkit-scrollbar-thumb:hover,
+#betfred-filter-preview-games::-webkit-scrollbar-thumb:hover,
+#betfred-all-favorites-panel .betfred-all-games-list::-webkit-scrollbar-thumb:hover,
+#betfred-removed-games-panel .betfred-all-games-list::-webkit-scrollbar-thumb:hover,
+#betfred-full-providers-panel .betfred-full-providers-list::-webkit-scrollbar-thumb:hover,
+#betfred-full-most-played-panel .betfred-full-most-played-list::-webkit-scrollbar-thumb:hover,
+#betfred-all-games-panel .betfred-all-games-list::-webkit-scrollbar-thumb:hover,
+#betfred-rtp-extremes-panel .betfred-rtp-games-list::-webkit-scrollbar-thumb:hover {
+  background: #ffe066 !important;
+}
+
+/* Hide horizontal scrollbars */
+#betfred-game-list::-webkit-scrollbar:horizontal,
+#betfred-game-list-builtin::-webkit-scrollbar:horizontal,
+#betfred-keyword-game-list::-webkit-scrollbar:horizontal,
+#betfred-filter-preview-games::-webkit-scrollbar:horizontal,
+#betfred-all-favorites-panel .betfred-all-games-list::-webkit-scrollbar:horizontal,
+#betfred-removed-games-panel .betfred-all-games-list::-webkit-scrollbar:horizontal,
+#betfred-full-providers-panel .betfred-full-providers-list::-webkit-scrollbar:horizontal,
+#betfred-full-most-played-panel .betfred-full-most-played-list::-webkit-scrollbar:horizontal,
+#betfred-all-games-panel .betfred-all-games-list::-webkit-scrollbar:horizontal,
+#betfred-rtp-extremes-panel .betfred-rtp-games-list::-webkit-scrollbar:horizontal {
+  display: none !important;
+  height: 0 !important;
+}
+
+/* Current Filter Games - SAME THEMED SCROLLBARS */
+#betfred-current-filter-games {
+  scrollbar-width: thin !important;
+  scrollbar-color: #ffd700 #23244e !important;
+  overflow-x: hidden !important;
+}
+
+#betfred-current-filter-games::-webkit-scrollbar {
+  width: 8px !important;
+  height: 0 !important;
+}
+
+#betfred-current-filter-games::-webkit-scrollbar-track {
+  background: #23244e !important;
+  border-radius: 4px !important;
+}
+
+#betfred-current-filter-games::-webkit-scrollbar-thumb {
+  background: #ffd700 !important;
+  border-radius: 4px !important;
+  border: 1px solid #23244e !important;
+}
+
+#betfred-current-filter-games::-webkit-scrollbar-thumb:hover {
+  background: #ffe066 !important;
+}
+
+/* Hide horizontal scrollbars for Current Filter Games */
+#betfred-current-filter-games::-webkit-scrollbar:horizontal {
+  display: none !important;
+  height: 0 !important;
+}
+
+/* Virtual Scroll Styles */
+.virtual-scroll-container {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+.virtual-scroll-viewport {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  will-change: transform;
+}
+
+.virtual-scroll-game-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  margin: 2px 0;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+  color: #cccccc;
+}
+
+.virtual-scroll-game-item:hover {
+  background: rgba(255, 215, 0, 0.1);
+  border-color: rgba(255, 215, 0, 0.4);
+  transform: translateX(4px);
+}
+
+.virtual-scroll-game-item .game-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.virtual-scroll-game-item .game-title {
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.virtual-scroll-game-item .game-provider {
+  font-size: 12px;
+  color: #999999;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.virtual-scroll-game-item .game-stats {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  margin-left: 8px;
+}
+
+.virtual-scroll-game-item .game-rtp {
+  font-size: 11px;
+  color: #28a745;
+  font-weight: 600;
+}
+
+.virtual-scroll-game-item .game-min-stake {
+  font-size: 11px;
+  color: #ffd700;
+  font-weight: 600;
+}
+
+.virtual-scroll-stat-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  margin: 2px 0;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 6px;
+  font-size: 14px;
+  color: #cccccc;
+}
+
+.virtual-scroll-stat-item .stat-rank {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+  color: #000000;
+  font-weight: bold;
+  border-radius: 50%;
+  margin-right: 12px;
+  font-size: 12px;
+}
+
+.virtual-scroll-stat-item .stat-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.virtual-scroll-stat-item .stat-title {
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.virtual-scroll-stat-item .stat-details {
+  font-size: 12px;
+  color: #999999;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.virtual-scroll-stat-item .stat-value {
+  font-weight: 600;
+  color: #ffd700;
+  margin-left: 8px;
+  font-size: 13px;
+}
+
+/* Performance optimizations */
+.virtual-scroll-container * {
+  will-change: transform;
+}
+
+.virtual-scroll-viewport {
+  contain: layout style paint;
+}
+
+/* Smooth scrolling for virtual scroll containers */
+.virtual-scroll-container {
+  scroll-behavior: smooth;
+}
+
+/* Loading states for virtual scroll */
+.virtual-scroll-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  color: #ffd700;
+  font-style: italic;
+}
+
+.virtual-scroll-loading::after {
+  content: '';
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-top: 2px solid #ffd700;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-left: 8px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Section Blocks */
+.betfred-section-block {
+  background: linear-gradient(135deg, rgba(30,34,60,0.3) 0%, rgba(22,33,62,0.3) 100%);
+  border: 1px solid rgba(255,215,0,0.3);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  backdrop-filter: blur(2px);
+  position: relative;
+  z-index: 1;
+}
+
+/* Filter section needs higher z-index for dropdowns */
+.betfred-section-block:first-child {
+  z-index: 1000002; /* High enough for dropdowns but not excessive */
+}
+.betfred-section-block:last-child {
+  margin-bottom: 0;
+}
+
+/* Bulk Keyword Popup Styling */
+
+/* Custom scrollbar for bulk games list */
+#betfred-bulk-games-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+#betfred-bulk-games-list::-webkit-scrollbar-track {
+  background: rgba(30, 34, 60, 0.8);
+  border-radius: 4px;
+}
+
+#betfred-bulk-games-list::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #ffd700 0%, #ffe066 100%);
+  border-radius: 4px;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+#betfred-bulk-games-list::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #ffe066 0%, #ffd700 100%);
+}
+.betfred-bulk-popup-header {
+  color: #ffd700;
+  background: linear-gradient(90deg, #23244e 70%, transparent);
+  border-radius: 8px 8px 0 0;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding: 12px 0 8px 0;
+  letter-spacing: .02em;
+  text-align: left;
+}
+
+.betfred-bulk-popup-subtitle {
+  color: #cccccc;
+  font-size: 16px;
+  margin-bottom: 20px;
+  text-align: left;
+  font-weight: 500;
+}
+
+.betfred-bulk-options-container {
+  background: linear-gradient(135deg, rgba(30,34,60,0.3) 0%, rgba(22,33,62,0.3) 100%);
+  border: 1px solid rgba(255,215,0,0.3);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.betfred-bulk-option-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  background: linear-gradient(135deg, rgba(30,34,60,0.5) 0%, rgba(22,33,62,0.5) 100%);
+  border: 1px solid rgba(255,215,0,0.2);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.betfred-bulk-option-item:hover {
+  border-color: rgba(255,215,0,0.4);
+  background: linear-gradient(135deg, rgba(30,34,60,0.7) 0%, rgba(22,33,62,0.7) 100%);
+}
+
+.betfred-bulk-option-item input[type="checkbox"] {
+  margin-right: 12px;
+  transform: scale(1.2);
+  accent-color: #ffd700;
+  }
+
+.betfred-bulk-option-item label {
+    color: #ffffff;
+  font-weight: 500;
+  cursor: pointer;
+  flex: 1;
+}
+
+.betfred-bulk-option-item strong {
+  color: #ffd700;
+  font-weight: 600;
+  }
+
+.betfred-bulk-divider {
+  margin: 16px 0;
+  border: none;
+  border-top: 1px solid rgba(255,215,0,0.3);
+  height: 1px;
+  }
+  
+.betfred-bulk-description {
+  color: #888888;
+  font-size: 14px;
+  margin-bottom: 20px;
+  text-align: left;
+  line-height: 1.4;
+}
+
+.betfred-bulk-button-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.betfred-bulk-button-container .betfred-btn {
+  margin-top: 0;
+  padding: 10px 20px;
+  font-size: 14px;
+}
+
+/* Custom Dropdown Styling */
+.betfred-custom-select {
+  position: relative;
+  width: 100%;
+  font-family: inherit;
+  z-index: 1000002; /* Same as section block for proper stacking context */
+  margin-bottom: 0;
+}
+
+.betfred-select-header {
+  background: #23244e;
+  border: 2px solid #ffd700;
+  border-radius: 10px;
+  padding: 10px 14px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: border 0.2s, background 0.2s;
+  color: #ffd700;
+  font-size: 16px;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1000002; /* Same as container for proper stacking context */
+  min-height: 24px;
+}
+
+/* When dropdown is open, adjust header border radius */
+.betfred-custom-select.open .betfred-select-header {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.betfred-select-header:hover {
+  border-color: #ffe066;
+  background: #1a1a2e;
+}
+
+.betfred-select-header:focus {
+  outline: none;
+  border-color: #ffe066;
+  background: #1a1a2e;
+  box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.3);
+}
+
+/* Ensure headers are focusable */
+.betfred-select-header {
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.betfred-select-value {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-right: 8px;
+  line-height: 1.4;
+  padding: 2px 0;
+  display: flex;
+  align-items: center;
+  min-height: 20px;
+  }
+
+.betfred-random-provider-icon {
+  color: #ffd700;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 2px 6px;
+  margin: 0 8px 0 2px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  text-shadow: 0 0 4px rgba(255, 215, 0, 0.5);
+}
+
+.betfred-random-provider-icon:hover {
+  background: rgba(255, 215, 0, 0.15);
+  color: #ffe066;
+  transform: rotate(180deg);
+  text-shadow: 0 0 6px rgba(255, 215, 0, 0.7);
+}
+
+.betfred-random-provider-icon:active {
+  transform: rotate(360deg);
+  background: rgba(255, 215, 0, 0.25);
+}
+
+.betfred-select-arrow {
+  color: #ffd700;
+  font-size: 12px;
+  transition: transform 0.2s;
+  flex-shrink: 0;
+  }
+
+.betfred-custom-select.open .betfred-select-arrow {
+  transform: rotate(180deg);
+}
+
+.betfred-select-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #23244e;
+  border: 2px solid #ffd700;
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 1000007 !important; /* Higher than provider dropdown for proper stacking context */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  margin-top: -2px;
+  /* Custom scrollbar styling */
+  scrollbar-width: thin;
+  scrollbar-color: #ffd700 #23244e;
+  /* Ensure perfect connection with header */
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+/* Manual Add modal-specific z-index overrides to ensure game list sits above provider select */
+.betfred-manual-add-modal .betfred-select-dropdown {
+  z-index: 2147483650 !important; /* Above any focused inputs/selects in modal */
+}
+
+.betfred-manual-add-modal #betfred-manual-add-provider,
+.betfred-manual-add-modal #betfred-manual-add-provider:focus {
+  position: relative;
+  z-index: 1000001 !important; /* Keep provider select below custom dropdown list */
+}
+
+.betfred-manual-add-modal .betfred-enhanced-select,
+.betfred-manual-add-modal .betfred-enhanced-select:focus {
+  z-index: 1000001 !important; /* Neutralize global high z-index in this modal to avoid overlap */
+}
+
+/* Webkit scrollbar styling */
+.betfred-select-dropdown::-webkit-scrollbar {
+  width: 8px;
+}
+
+.betfred-select-dropdown::-webkit-scrollbar-track {
+  background: #23244e;
+  border-radius: 4px;
+}
+
+.betfred-select-dropdown::-webkit-scrollbar-thumb {
+  background: #ffd700;
+  border-radius: 4px;
+  border: 1px solid #23244e;
+}
+
+.betfred-select-dropdown::-webkit-scrollbar-thumb:hover {
+  background: #ffe066;
+}
+
+/* Custom scrollbar for manual add game selection dropdown */
+.betfred-custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.betfred-custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(30,34,60,0.8);
+  border-radius: 4px;
+}
+
+.betfred-custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #ffd700 0%, #ffe066 100%);
+  border-radius: 4px;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.betfred-custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #ffe066 0%, #ffd700 100%);
+}
+
+.betfred-select-option {
+  padding: 12px 14px;
+  cursor: pointer;
+  color: #ffd700;
+  font-size: 14px;
+  transition: background 0.2s;
+  border-bottom: 1px solid rgba(255,215,0,0.2);
+  line-height: 1.5;
+  min-height: 20px;
+  display: block;
+  text-align: left;
+  word-wrap: break-word;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
+.betfred-select-option:last-child {
+  border-bottom: none;
+}
+
+.betfred-select-option:hover {
+  background: #1a1a2e;
+}
+
+.betfred-select-option:focus {
+  outline: none;
+  background: #1a1a2e;
+  box-shadow: inset 0 0 0 2px rgba(255, 215, 0, 0.5);
+}
+
+.betfred-select-option.selected {
+  background: #ffd700;
+  color: #1a1a2e;
+  font-weight: 600;
+}
+
+/* Favorite game styling */
+.betfred-favorite-option {
+  background: rgba(255, 215, 0, 0.1) !important;
+  font-weight: 600 !important;
+  border-left: 3px solid #ffd700 !important;
+  padding-left: 11px !important;
+}
+
+.betfred-favorite-option:hover {
+  background: rgba(255, 215, 0, 0.15) !important;
+}
+
+.betfred-favorite-option.selected {
+  background: #ffd700 !important;
+  color: #1a1a2e !important;
+  font-weight: 700 !important;
+  border-left: 3px solid #1a1a2e !important;
+}
+
+/* Favorite text styling (green text in custom dropdown) */
+.betfred-favorite-text {
+  color: #28a745 !important;
+  font-weight: 600;
+}
+
+/* Loading States and Progress Indicators */
+.betfred-loading {
+  position: relative;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.betfred-loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid transparent;
+  border-top: 2px solid #ffd700;
+  border-radius: 50%;
+  animation: betfred-spin 1s linear infinite;
+}
+
+@keyframes betfred-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Progress Bar */
+.betfred-progress {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+
+.betfred-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #ffd700, #ffed4e);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.betfred-progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: betfred-progress-shine 2s infinite;
+}
+
+@keyframes betfred-progress-shine {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Enhanced Toast Animations */
+.betfred-toast {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(135deg, #2a2a4e 0%, #1e2a4a 100%);
+  border: 2px solid #ffd700;
+  border-radius: 15px;
+  padding: 20px 30px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  z-index: 2147483652;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+  animation: betfred-toast-slide-in 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  max-width: 400px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+@keyframes betfred-toast-slide-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  to {
+  opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.betfred-toast.success {
+  border-color: #28a745;
+  background: linear-gradient(135deg, #1e4a2e 0%, #1a2a4a 100%);
+}
+
+.betfred-toast.error {
+  border-color: #dc3545;
+  background: linear-gradient(135deg, #4a1e2e 0%, #2a1a4a 100%);
+}
+
+/* Enhanced Input Focus States */
+.betfred-input:focus, .betfred-panel input[type="text"]:focus, .betfred-panel input[type="number"]:focus, .betfred-panel select:focus, .betfred-popup input[type="text"]:focus, .betfred-popup input[type="number"]:focus, .betfred-popup select:focus, .betfred-modal input[type="text"]:focus, .betfred-modal input[type="number"]:focus, .betfred-modal select:focus {
+  border-color: #ffd700;
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+  transform: translateY(-1px);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Enhanced Filter Button Animations */
+.betfred-filter-box .betfred-filter-btn {
+  background: linear-gradient(135deg, #3a3a6e 0%, #2a4a6e 100%);
+  border: 2px solid #4a4a8a;
+    border-radius: 12px;
+  padding: 10px 16px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  margin: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+.betfred-filter-box .betfred-filter-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.betfred-filter-box .betfred-filter-btn:hover::before {
+  left: 100%;
+}
+
+.betfred-filter-box .betfred-filter-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+}
+
+.betfred-filter-box .betfred-filter-btn.active,
+.betfred-filter-box .betfred-filter-btn:active {
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+  color: #1a1a2e;
+  border-color: #ffd700;
+  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
+  animation: betfred-filter-active 0.2s ease-out;
+}
+
+@keyframes betfred-filter-active {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+
+
+/* Enhanced Option Hover Effects */
+.betfred-select-option {
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.betfred-select-option::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+  transition: left 0.4s ease;
+}
+
+.betfred-select-option:hover::before {
+  left: 100%;
+}
+
+.betfred-select-option:hover {
+  background: linear-gradient(135deg, #3a3a6e 0%, #2a4a6e 100%);
+  transform: translateX(5px);
+  box-shadow: 0 2px 10px rgba(255, 215, 0, 0.2);
+}
+
+/* Enhanced Stat Card Animations */
+.betfred-stat-card {
+  background: linear-gradient(135deg, #2a2a4e 0%, #1e2a4a 100%);
+  border: 2px solid #3a3a6e;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 10px 0;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+}
+
+.betfred-stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.05), transparent);
+  transition: left 0.8s ease;
+}
+
+.betfred-stat-card:hover::before {
+  left: 100%;
+}
+
+.betfred-stat-card:hover {
+  border-color: #ffd700;
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(255, 215, 0, 0.2);
+}
+
+/* Pulse Animation for Important Elements */
+@keyframes betfred-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.betfred-pulse {
+  animation: betfred-pulse 2s infinite;
+}
+
+/* Fade In Animation for Dynamic Content */
+@keyframes betfred-fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.betfred-fade-in {
+  animation: betfred-fade-in 0.5s ease-out;
+}
+
+/* Success Animation */
+@keyframes betfred-success-bounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.betfred-success {
+  animation: betfred-success-bounce 0.6s ease-out;
+}
+
+/* Save Button Success Feedback */
+@keyframes betfred-save-success {
+  0% { 
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    transform: scale(1);
+  }
+  25% { 
+    background: linear-gradient(135deg, #20c997 0%, #17a2b8 100%);
+    transform: scale(1.05);
+  }
+  50% { 
+    background: linear-gradient(135deg, #17a2b8 0%, #6f42c1 100%);
+    transform: scale(1.1);
+  }
+  75% { 
+    background: linear-gradient(135deg, #6f42c1 0%, #20c997 100%);
+    transform: scale(1.05);
+  }
+  100% { 
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    transform: scale(1);
+  }
+}
+
+.save-preview-btn.success,
+.save-builtin-edit-btn.success {
+  animation: betfred-save-success 2s ease-in-out;
+  pointer-events: none; /* Prevent clicking during animation */
+}
+
+/* Enhanced Close Button */
+.betfred-close-btn {
+  background: linear-gradient(135deg, #dc3545 0%, #fd7e14 100%);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);
+}
+
+.betfred-close-btn:hover {
+  transform: rotate(90deg) scale(1.1);
+  box-shadow: 0 8px 25px rgba(220, 53, 69, 0.4);
+}
+
+.betfred-close-btn:active {
+  transform: rotate(90deg) scale(0.95);
+  transition: all 0.1s ease;
+}
+
+
+
+/* Stats Panel */
+.betfred-stats-panel {
+  max-width: 900px !important;
+  max-height: 80vh !important;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.betfred-stats-panel .betfred-modal-header {
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.betfred-stats-panel .betfred-modal-body {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px;
+}
+
+/* Stats Panel Modal Header - Provides proper positioning context for close button */
+.betfred-stats-panel .betfred-modal-header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 20px 0 20px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Stats Panel Close Button - Positioned within modal header */
+.betfred-stats-panel .betfred-modal-header .betfred-close-btn {
+  position: absolute !important;
+  top: 5px !important;
+  right: 20px !important;
+  margin: 0 !important;
+}
+
+.betfred-stats-panel::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+.betfred-stats-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.betfred-stats-panel::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 0px;
+}
+
+.betfred-stats-panel::-webkit-scrollbar-thumb:hover {
+  background: transparent;
+}
+
+/* Firefox scrollbar */
+.betfred-stats-panel {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* Settings Panel - Match stats panel size and styling */
+.betfred-settings-panel {
+  max-width: 900px !important;
+  max-height: 80vh !important;
+  overflow-y: auto;
+}
+
+/* Settings Panel Scrollbar - Invisible like stats panel */
+.betfred-settings-panel::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+.betfred-settings-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.betfred-settings-panel::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 0px;
+}
+
+.betfred-settings-panel::-webkit-scrollbar-thumb:hover {
+  background: transparent;
+}
+
+/* Firefox scrollbar for settings panel */
+.betfred-settings-panel {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* Fixed header for settings panel - only when visible */
+.betfred-settings-panel[style*="display: block"] {
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+}
+
+.betfred-settings-panel[style*="display: block"] .betfred-modal-header {
+  flex-shrink: 0 !important;
+  background: transparent;
+  backdrop-filter: none;
+}
+
+.betfred-settings-panel[style*="display: block"] .betfred-modal-body {
+  flex: 1 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+
+/* Fixed header for instructions panel */
+.betfred-instructions-popup {
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+}
+
+.betfred-instructions-popup .betfred-modal-header {
+  flex-shrink: 0 !important;
+  background: transparent;
+  backdrop-filter: none;
+}
+
+.betfred-instructions-popup .betfred-modal-body {
+  flex: 1 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+
+/* Actions Grid Layout - 4x4 grid with minimal buttons */
+.betfred-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-top: 12px;
+  padding: 0 6px;
+}
+
+/* Action Buttons - Minimal size for no scrolling */
+.betfred-action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  padding: 8px 6px !important;
+  font-size: 16px !important;
+  font-weight: 700 !important; /* Force bold in all browsers */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; /* Cross-browser font consistency */
+  -webkit-font-smoothing: antialiased; /* Chrome/Safari font smoothing */
+  -moz-osx-font-smoothing: grayscale; /* Firefox font smoothing */
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border: 2px solid transparent;
+}
+
+.betfred-action-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.betfred-action-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.betfred-action-btn .betfred-icon {
+  font-size: 16px;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.betfred-action-btn span:not(.betfred-icon) {
+  text-align: center;
+  line-height: 1.1;
+  word-wrap: break-word;
+}
+
+/* Hidden feature: Multiple color modes for action buttons */
+.betfred-color-mode-1 .betfred-action-btn span:not(.betfred-icon) {
+  color: #ffd700 !important; /* Gold */
+  text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+.betfred-color-mode-2 .betfred-action-btn span:not(.betfred-icon) {
+  color: #ff6b6b !important; /* Red */
+  text-shadow: 0 0 5px rgba(255, 107, 107, 0.5);
+  transition: all 0.3s ease;
+}
+
+.betfred-color-mode-3 .betfred-action-btn span:not(.betfred-icon) {
+  color: #4ecdc4 !important; /* Cyan */
+  text-shadow: 0 0 5px rgba(78, 205, 196, 0.5);
+  transition: all 0.3s ease;
+}
+
+.betfred-color-mode-4 .betfred-action-btn span:not(.betfred-icon) {
+  color: #45b7d1 !important; /* Blue */
+  text-shadow: 0 0 5px rgba(69, 183, 209, 0.5);
+  transition: all 0.3s ease;
+}
+
+.betfred-color-mode-5 .betfred-action-btn span:not(.betfred-icon) {
+  color: #96ceb4 !important; /* Green */
+  text-shadow: 0 0 5px rgba(150, 206, 180, 0.5);
+  transition: all 0.3s ease;
+}
+
+.betfred-color-mode-6 .betfred-action-btn span:not(.betfred-icon) {
+  color: #ffffff !important; /* White */
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+/* Hidden feature: Random background colors for action buttons */
+.betfred-random-color-1,
+.betfred-random-color-2,
+.betfred-random-color-3,
+.betfred-random-color-4,
+.betfred-random-color-5,
+.betfred-random-color-6,
+.betfred-random-color-7,
+.betfred-random-color-8 {
+  background-color: var(--random-bg-color) !important;
+}
+
+/* Fallback for data attribute random colors */
+.betfred-btn[data-random-bg] {
+  background-color: var(--random-bg-color) !important;
+}
+
+/* Hidden feature: Panel background color modes */
+.betfred-panel-bg-mode-1 .betfred-panel {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%) !important;
+}
+
+.betfred-panel-bg-mode-2 .betfred-panel {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%) !important;
+}
+
+.betfred-panel-bg-mode-3 .betfred-panel {
+  background: linear-gradient(135deg, #2d1b69 0%, #1e3a8a 100%) !important;
+}
+
+.betfred-panel-bg-mode-4 .betfred-panel {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%) !important;
+}
+
+.betfred-panel-bg-mode-5 .betfred-panel {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
+}
+
+.betfred-panel-bg-mode-6 .betfred-panel {
+  background: linear-gradient(135deg, #1e1e2e 0%, #2d2d3f 100%) !important;
+}
+
+.betfred-panel-bg-mode-7 .betfred-panel {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%) !important;
+}
+
+.betfred-panel-bg-mode-8 .betfred-panel {
+  background: linear-gradient(135deg, #2d1b69 0%, #1e3a8a 100%) !important;
+}
+
+.betfred-panel-bg-mode-9 .betfred-panel {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%) !important;
+}
+
+.betfred-panel-bg-mode-10 .betfred-panel {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
+}
+
+/* Hidden feature: Header background color modes */
+.betfred-header-bg-mode-1 .betfred-section-title {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%) !important;
+}
+
+.betfred-header-bg-mode-2 .betfred-section-title {
+  background: linear-gradient(135deg, #2d1b69 0%, #1e3a8a 100%) !important;
+}
+
+.betfred-header-bg-mode-3 .betfred-section-title {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%) !important;
+}
+
+.betfred-header-bg-mode-4 .betfred-section-title {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
+}
+
+.betfred-header-bg-mode-5 .betfred-section-title {
+  background: transparent !important;
+}
+
+/* Responsive grid for smaller screens */
+@media (max-width: 768px) {
+  .betfred-actions-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+  
+  .betfred-action-btn {
+    min-height: 45px;
+    padding: 6px 4px !important;
+    font-size: 12px !important;
+  }
+  
+  .betfred-action-btn .betfred-icon {
+    font-size: 14px;
+    margin-bottom: 3px;
+  }
+}
+
+.betfred-stats-grid {
+  display: grid;
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.betfred-stat-section {
+  background: linear-gradient(135deg, #2a2a4e 0%, #1e2a4a 100%);
+  border: 2px solid #3a3a6e;
+  border-radius: 15px;
+  padding: 20px;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Removed hover effect for cleaner stats dashboard */
+
+.betfred-stat-section h3 {
+  color: #ffd700;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 15px 0;
+    display: flex;
+    align-items: center;
+  gap: 8px;
+}
+
+/* Overview Stats Cards */
+.betfred-stat-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.betfred-stat-cards .betfred-stat-card {
+  background: linear-gradient(135deg, #3a3a6e 0%, #2a4a6e 100%);
+  border: 2px solid #4a4a8a;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+/* Removed hover effect for cleaner stats dashboard */
+
+.stat-number {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffd700;
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #cccccc;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Game Stats List */
+.betfred-game-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Stats Time Range Filter */
+.stats-time-range-filter {
+  margin-bottom: 20px;
+  padding: 0 4px;
+}
+
+.time-range-buttons {
+  display: flex;
+  gap: 2px;
+  background: rgba(58, 58, 110, 0.3);
+  border-radius: 8px;
+  padding: 4px;
+  border: 1px solid rgba(74, 74, 138, 0.4);
+}
+
+.time-range-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #cccccc;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.time-range-btn:hover {
+  background: rgba(255, 215, 0, 0.1);
+  color: #ffd700;
+}
+
+.time-range-btn.active {
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+  color: #1a1a2e;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(255, 215, 0, 0.3);
+}
+
+/* Most Played Games - Clean Modern Design */
+.most-played-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.most-played-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  background: rgba(58, 58, 110, 0.4);
+  border: 1px solid rgba(74, 74, 138, 0.6);
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.most-played-item:hover {
+  background: rgba(74, 74, 126, 0.5);
+  border-color: rgba(90, 90, 154, 0.8);
+  transform: translateX(3px);
+}
+
+/* First Place - Gold */
+.most-played-item.first-place {
+  background: rgba(255, 215, 0, 0.15);
+  border-color: rgba(255, 215, 0, 0.4);
+  box-shadow: 0 2px 12px rgba(255, 215, 0, 0.1);
+}
+
+.most-played-item.first-place:hover {
+  background: rgba(255, 215, 0, 0.2);
+  border-color: rgba(255, 215, 0, 0.6);
+  box-shadow: 0 4px 16px rgba(255, 215, 0, 0.15);
+}
+
+/* Second Place - Silver */
+.most-played-item.second-place {
+  background: rgba(192, 192, 192, 0.15);
+  border-color: rgba(192, 192, 192, 0.4);
+  box-shadow: 0 2px 12px rgba(192, 192, 192, 0.1);
+}
+
+.most-played-item.second-place:hover {
+  background: rgba(192, 192, 192, 0.2);
+  border-color: rgba(192, 192, 192, 0.6);
+  box-shadow: 0 4px 16px rgba(192, 192, 192, 0.15);
+}
+
+/* Third Place - Bronze */
+.most-played-item.third-place {
+  background: rgba(205, 127, 50, 0.15);
+  border-color: rgba(205, 127, 50, 0.4);
+  box-shadow: 0 2px 12px rgba(205, 127, 50, 0.1);
+}
+
+.most-played-item.third-place:hover {
+  background: rgba(205, 127, 50, 0.2);
+  border-color: rgba(205, 127, 50, 0.6);
+  box-shadow: 0 4px 16px rgba(205, 127, 50, 0.15);
+}
+
+.position-indicator {
+  font-size: 18px;
+  min-width: 32px;
+  text-align: center;
+  font-weight: 700;
+  color: #ffd700;
+}
+
+.game-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.game-name {
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 15px;
+  line-height: 1.3;
+  margin-bottom: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.game-meta {
+  font-size: 12px;
+  color: #bbbbbb;
+  font-weight: 500;
+}
+
+.play-metrics {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 100px;
+  justify-content: flex-end;
+}
+
+.metric-value {
+  font-weight: 700;
+  color: #ffd700;
+  font-size: 16px;
+}
+
+.metric-unit {
+  font-size: 12px;
+  color: #cccccc;
+  font-weight: 500;
+}
+
+.percentage-value {
+  font-weight: 600;
+  color: #4ade80;
+  font-size: 12px;
+  background: rgba(74, 222, 128, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid rgba(74, 222, 128, 0.2);
+}
+
+.play-progress-bar {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.play-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ffd700 0%, #ffed4e 100%);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.betfred-game-stat-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px;
+  background: linear-gradient(135deg, #3a3a6e 0%, #2a4a6e 100%);
+  border: 1px solid #4a4a8a;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+/* Removed hover effect for cleaner stats dashboard */
+
+.game-rank {
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+  color: #1a1a2e;
+  font-weight: 700;
+  font-size: 14px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.game-info {
+  flex: 1;
+}
+
+.game-title {
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 2px;
+}
+
+.game-details {
+  font-size: 12px;
+  color: #cccccc;
+}
+
+.game-stats {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.play-count {
+  font-weight: 600;
+  color: #ffd700;
+  margin-bottom: 2px;
+}
+
+.play-time {
+  font-size: 12px;
+  color: #888888;
+}
+
+/* Time Stats */
+.betfred-time-overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.time-stat-card {
+  background: linear-gradient(135deg, #3a3a6e 0%, #2a4a6e 100%);
+  border: 2px solid #4a4a8a;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+/* Removed hover effect for cleaner stats dashboard */
+
+/* Time Records Side by Side Layout */
+.time-records-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+  margin-bottom: 15px;
+}
+
+.time-record-card {
+  background: linear-gradient(135deg, #2e4a6e 0%, #2a4a6a 100%);
+  border: 2px solid #4a6a8e;
+  border-radius: 12px;
+  padding: 16px;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.time-record-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  border-color: #5a7a9e;
+}
+
+.record-title {
+  color: #ffd700;
+  margin: 0 0 12px 0;
+  font-size: 15px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.record-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.record-game {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.record-time {
+  color: #4ade80;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.betfred-most-time-played {
+  background: linear-gradient(135deg, #2e4a6e 0%, #2a4a6a 100%);
+  border: 2px solid #4a6a8e;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.betfred-most-time-played h4 {
+  color: #ffd700;
+  margin: 0 0 10px 0;
+  font-size: 16px;
+}
+
+.most-time-game {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.total-time {
+  color: #ffd700;
+  font-weight: 600;
+}
+
+.betfred-longest-session {
+  background: linear-gradient(135deg, #1e4a2e 0%, #1a4a2a 100%);
+  border: 2px solid #2e6a4e;
+  border-radius: 12px;
+  padding: 15px;
+}
+
+.betfred-longest-session h4 {
+  color: #ffd700;
+  margin: 0 0 10px 0;
+  font-size: 16px;
+}
+
+.longest-game {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.session-time {
+  color: #ffd700;
+  font-weight: 600;
+}
+
+/* Provider Stats */
+.betfred-provider-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.betfred-provider-stat-item {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  background: linear-gradient(135deg, #3a3a6e 0%, #2a4a6e 100%);
+  border: 1px solid #4a4a8a;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  margin-bottom: 8px;
+}
+
+.betfred-provider-stat-item.has-activity {
+  background: linear-gradient(135deg, #3a4a6e 0%, #2a5a6e 100%);
+  border-color: #5a6a9a;
+  box-shadow: 0 4px 15px rgba(90, 106, 154, 0.2);
+}
+
+.betfred-provider-stat-item.no-activity {
+  background: linear-gradient(135deg, #2a2a3a 0%, #1a2a3a 100%);
+  border-color: #3a3a4a;
+  opacity: 0.8;
+}
+
+/* Provider Position Colors */
+/* First Place - Gold */
+.betfred-provider-stat-item.first-place {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 215, 0, 0.1) 100%);
+  border-color: rgba(255, 215, 0, 0.5);
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.15);
+}
+
+/* Second Place - Silver */
+.betfred-provider-stat-item.second-place {
+  background: linear-gradient(135deg, rgba(192, 192, 192, 0.2) 0%, rgba(192, 192, 192, 0.1) 100%);
+  border-color: rgba(192, 192, 192, 0.5);
+  box-shadow: 0 4px 15px rgba(192, 192, 192, 0.15);
+}
+
+/* Third Place - Bronze */
+.betfred-provider-stat-item.third-place {
+  background: linear-gradient(135deg, rgba(205, 127, 50, 0.2) 0%, rgba(205, 127, 50, 0.1) 100%);
+  border-color: rgba(205, 127, 50, 0.5);
+  box-shadow: 0 4px 15px rgba(205, 127, 50, 0.15);
+}
+
+/* Removed hover effect for cleaner stats dashboard */
+
+.provider-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.provider-name {
+  font-weight: 700;
+  font-size: 16px;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.activity-indicator {
+  font-size: 18px;
+  opacity: 0.8;
+}
+
+.provider-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 8px;
+}
+
+.stat-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.stat-badge:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.plays-badge {
+  background: linear-gradient(135deg, #1a1a2e 0%, #2a2a4e 100%);
+  color: #ffd700;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.games-badge {
+  background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+  color: #ecfdf5;
+  border: 1px solid rgba(74, 222, 128, 0.4);
+}
+
+.available-badge {
+  background: linear-gradient(135deg, #1e40af 0%, #1d4ed8 100%);
+  color: #dbeafe;
+  border: 1px solid rgba(96, 165, 250, 0.4);
+}
+
+.favorites-badge {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  color: #fef2f2;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+}
+
+.favorites-badge--empty {
+  background: linear-gradient(135deg, rgba(220, 38, 38, 0.3) 0%, rgba(185, 28, 28, 0.3) 100%);
+  color: rgba(254, 242, 242, 0.6);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.untried-badge {
+  background: linear-gradient(135deg, #374151 0%, #4b5563 100%);
+  color: #f3f4f6;
+  border: 1px solid rgba(156, 163, 175, 0.4);
+  justify-content: center;
+}
+
+.stat-icon {
+  font-size: 14px;
+}
+
+.stat-value {
+  font-size: 15px;
+  font-weight: 800;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.stat-label {
+  font-size: 11px;
+  opacity: 0.9;
+  font-weight: 600;
+}
+
+.provider-stats {
+  display: flex;
+  gap: 15px;
+  font-size: 12px;
+  color: #cccccc;
+}
+
+.provider-play-count {
+  color: #ffd700;
+  font-weight: 600;
+}
+
+/* View More Button for Provider Breakdown */
+.betfred-view-more-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.betfred-view-more-btn {
+  background: linear-gradient(135deg, #ffd700 0%, #ffe066 100%);
+  color: #1a1a2e;
+  border: none;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.betfred-view-more-btn:hover {
+  background: linear-gradient(135deg, #ffe066 0%, #ffed4e 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+}
+
+.betfred-view-more-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+}
+
+/* Full Provider Breakdown Modal */
+.betfred-full-providers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 60vh;
+  overflow-y: auto;
+  padding: 8px 8px 8px 8px;
+  /* Custom invisible scrollbar */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.betfred-full-providers-list::-webkit-scrollbar {
+  display: none;
+}
+
+/* Full Most Played Games List */
+.betfred-full-most-played-list {
+  max-height: 60vh;
+  overflow-y: auto;
+  padding: 8px 8px 8px 8px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.betfred-full-most-played-list::-webkit-scrollbar {
+  display: none;
+}
+
+.betfred-full-most-played-list .betfred-game-stat-item.top-game {
+  background: linear-gradient(135deg, #2e4a6e 0%, #2a4a6a 100%);
+  border: 2px solid #4a6a8e;
+}
+
+/* Enhanced play metrics styling for most played games modal */
+.betfred-full-most-played-list .betfred-game-stat-item .metric-value {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Position styling for most played games modal */
+.betfred-full-most-played-list .betfred-game-stat-item.first-place {
+  background: rgba(255, 215, 0, 0.15);
+  border-color: rgba(255, 215, 0, 0.4);
+  box-shadow: 0 2px 12px rgba(255, 215, 0, 0.1);
+}
+
+.betfred-full-most-played-list .betfred-game-stat-item.first-place:hover {
+  background: rgba(255, 215, 0, 0.2);
+  border-color: rgba(255, 215, 0, 0.6);
+  box-shadow: 0 4px 16px rgba(255, 215, 0, 0.15);
+}
+
+.betfred-full-most-played-list .betfred-game-stat-item.second-place {
+  background: rgba(192, 192, 192, 0.15);
+  border-color: rgba(192, 192, 192, 0.4);
+  box-shadow: 0 2px 12px rgba(192, 192, 192, 0.1);
+}
+
+.betfred-full-most-played-list .betfred-game-stat-item.second-place:hover {
+  background: rgba(192, 192, 192, 0.2);
+  border-color: rgba(192, 192, 192, 0.6);
+  box-shadow: 0 4px 16px rgba(192, 192, 192, 0.15);
+}
+
+.betfred-full-most-played-list .betfred-game-stat-item.third-place {
+  background: rgba(205, 127, 50, 0.15);
+  border-color: rgba(205, 127, 50, 0.4);
+  box-shadow: 0 2px 12px rgba(205, 127, 50, 0.1);
+}
+
+.betfred-full-most-played-list .betfred-game-stat-item.third-place:hover {
+  background: rgba(205, 127, 50, 0.2);
+  border-color: rgba(205, 127, 50, 0.6);
+  box-shadow: 0 4px 16px rgba(205, 127, 50, 0.15);
+}
+
+.betfred-full-providers-list .betfred-provider-stat-item {
+  position: relative;
+  padding: 16px;
+  background: linear-gradient(135deg, #3a3a6e 0%, #2a4a6e 100%);
+  border: 1px solid #4a4a8a;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.betfred-full-providers-list .betfred-provider-stat-item.top-provider {
+  border-color: #ffd700;
+  background: linear-gradient(135deg, #4a4a8e 0%, #3a5a8e 100%);
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+}
+
+.betfred-full-providers-list .betfred-provider-stat-item.has-activity {
+  background: linear-gradient(135deg, #3a3a6e 0%, #2a4a6e 100%);
+  border-color: #4a4a8a;
+}
+
+.betfred-full-providers-list .betfred-provider-stat-item.no-activity {
+  background: linear-gradient(135deg, #1a1a2a 0%, #0a0a1a 100%);
+  border-color: #2a2a3a;
+  opacity: 0.7;
+}
+
+.provider-no-activity {
+  color: #888888;
+  font-style: italic;
+  font-size: 14px;
+}
+
+/* Removed hover effect for cleaner stats dashboard */
+
+.provider-rank {
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  background: linear-gradient(135deg, #ffd700 0%, #ffe066 100%);
+  color: #1a1a2e;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 12px;
+  min-width: 24px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+  z-index: 1;
+}
+
+.betfred-full-providers-list .betfred-provider-stat-item .provider-name {
+  margin-left: 20px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.betfred-full-providers-list .betfred-provider-stat-item .provider-stats {
+  font-size: 14px;
+  gap: 20px;
+}
+
+.betfred-full-providers-list .betfred-provider-stat-item .provider-play-count {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* Recent Activity */
+.betfred-recent-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.betfred-recent-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: linear-gradient(135deg, #3a3a6e 0%, #2a4a6e 100%);
+  border: 1px solid #4a4a8a;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  margin-bottom: 8px;
+}
+
+/* Removed hover effect for cleaner stats dashboard */
+
+.recent-game-main {
+  flex: 1;
+  text-align: left;
+  min-width: 0; /* Allow flex item to shrink below content size */
+  overflow: hidden; /* Ensure overflow is handled by child */
+}
+
+.recent-game-title {
+  font-weight: 700;
+  font-size: 16px;
+  color: #ffffff;
+  margin-bottom: 4px;
+  line-height: 1.2;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  width: 100%;
+  max-width: 100%;
+  cursor: help;
+  position: relative;
+  display: block; /* Ensure block-level display for proper width handling */
+}
+
+.recent-game-title:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.9);
+  color: #ffffff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  z-index: 10000;
+  pointer-events: none;
+  margin-bottom: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.recent-game-provider {
+  font-size: 13px;
+  color: #b8c5d6;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.recent-game-time {
+  text-align: right;
+  flex-shrink: 0;
+  margin-left: 16px;
+}
+
+.recent-time-ago {
+  font-size: 14px;
+  color: #ffd700;
+  font-weight: 600;
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.recent-time-date {
+  font-size: 11px;
+  color: #888888;
+  opacity: 0.8;
+}
+
+/* Achievement Stats */
+.betfred-achievement-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.betfred-achievement-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px;
+  background: linear-gradient(135deg, #3a3a6e 0%, #2a4a6e 100%);
+  border: 1px solid #4a4a8a;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+/* Removed hover effect for cleaner stats dashboard */
+
+.achievement-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.achievement-title {
+  font-weight: 600;
+  color: #ffd700;
+  margin-bottom: 2px;
+}
+
+.achievement-desc {
+  font-size: 12px;
+  color: #cccccc;
+}
+
+/* No Data States */
+.no-data {
+  text-align: center;
+  color: #888888;
+  font-style: italic;
+  padding: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .betfred-stats-panel {
+    max-width: 95% !important;
+    max-height: 90vh !important;
+  }
+  
+  .betfred-stat-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .betfred-time-overview {
+    grid-template-columns: 1fr;
+  }
+  
+  .betfred-game-stat-item,
+  .betfred-provider-stat-item,
+  .betfred-recent-item,
+  .betfred-achievement-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .game-stats,
+  .provider-stats,
+  .recent-game-date {
+    align-self: flex-end;
+  }
+}
+
+.betfred-margin-bottom-8 {
+  margin-bottom: 8px;
+}
+
+.betfred-margin-bottom-0 {
+  margin-bottom: 0;
+}
+
+.betfred-margin-top-20 {
+  margin-top: 20px;
+}
+
+/* Quick Stats Grid */
+.betfred-quick-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+/* Footer Info */
+.betfred-footer-info {
+  text-align: center;
+  margin-top: 20px;
+  color: #888;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.betfred-footer-title {
+  font-weight: bold;
+  color: #ffd700;
+  display: inline-flex;
+  align-items: center;
+}
+
+.betfred-footer-separator {
+  margin: 0 8px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.betfred-footer-info #betfred-version-display {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Clickable Version Styles */
+.betfred-version-clickable {
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.betfred-version-clickable:hover {
+  opacity: 1;
+  color: white;
+}
+
+/* Universal Panel Scrollbar Styles - Invisible Scroll for All Panels */
+.betfred-panel {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.betfred-panel::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Panel Body Scrollbar Styles */
+.betfred-panel .betfred-modal-body,
+.betfred-panel .betfred-panel-body,
+.betfred-panel .betfred-panel-content {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.betfred-panel .betfred-modal-body::-webkit-scrollbar,
+.betfred-panel .betfred-panel-body::-webkit-scrollbar,
+.betfred-panel .betfred-panel-content::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Specific Panel Scrollbar Styles */
+.betfred-options-panel,
+.betfred-stats-panel,
+.betfred-settings-panel,
+.betfred-side-panel,
+.betfred-release-notes-panel,
+.betfred-all-favorites-panel,
+.betfred-removed-games-panel,
+.betfred-full-providers-panel,
+.betfred-full-most-played-panel,
+.betfred-all-games-panel,
+.betfred-rtp-extremes-panel {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.betfred-options-panel::-webkit-scrollbar,
+.betfred-stats-panel::-webkit-scrollbar,
+.betfred-settings-panel::-webkit-scrollbar,
+.betfred-side-panel::-webkit-scrollbar,
+.betfred-release-notes-panel::-webkit-scrollbar,
+.betfred-all-favorites-panel::-webkit-scrollbar,
+.betfred-removed-games-panel::-webkit-scrollbar,
+.betfred-full-providers-panel::-webkit-scrollbar,
+.betfred-full-most-played-panel::-webkit-scrollbar,
+.betfred-all-games-panel::-webkit-scrollbar,
+.betfred-rtp-extremes-panel::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+
+
+/* =======================
+   Enhanced Manual Add Modal
+   ======================= */
+
+.betfred-manual-add-modal {
+  max-width: 800px;
+  width: 90%;
+}
+
+.betfred-modal-section {
+  margin-bottom: 24px;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 12px;
+  background: rgba(30, 34, 60, 0.3);
+  overflow: visible; /* prevent clipping of native dropdown */
+}
+
+.betfred-section-header {
+  background: linear-gradient(135deg, rgba(30,34,60,0.8) 0%, rgba(22,33,62,0.8) 100%);
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-weight: 600;
+  color: #ffd700;
+  font-size: 16px;
+}
+
+.betfred-section-content {
+  padding: 20px;
+}
+
+.betfred-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.betfred-form-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.betfred-enhanced-input,
+.betfred-enhanced-select {
+  padding: 12px 16px;
+  background: rgba(30, 34, 60, 0.8);
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-radius: 8px;
+  color: #e5eaf2;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.betfred-enhanced-input:focus,
+.betfred-enhanced-select:focus {
+  border-color: #ffd700;
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+  background: rgba(30, 34, 60, 0.9);
+}
+
+/* Fix dropdown z-index and prevent white flash */
+.betfred-enhanced-select {
+  position: relative;
+  z-index: 1000005 !important;
+}
+
+.betfred-enhanced-select:focus {
+  z-index: 1000006 !important;
+}
+
+/* Prevent white flash on dropdown options */
+.betfred-enhanced-select option {
+  background: #23244e !important;
+  color: #ffd700 !important;
+  border: none !important;
+  padding: 8px 12px !important;
+  font-size: 14px !important;
+  transition: none !important;
+}
+
+.betfred-enhanced-textarea {
+  padding: 16px;
+  background: rgba(30, 34, 60, 0.8);
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-radius: 8px;
+  color: #e5eaf2;
+  font-size: 14px;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 160px;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.betfred-enhanced-textarea:focus {
+  border-color: #ffd700;
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+  background: rgba(30, 34, 60, 0.9);
+}
+
+.betfred-help-text {
+  font-size: 12px;
+  color: #cccccc;
+  margin-top: 8px;
+  line-height: 1.4;
+}
+
+.betfred-modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.betfred-btn--secondary {
+  background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.betfred-btn--secondary:hover {
+  background: linear-gradient(135deg, #5a6268 0%, #343a40 100%);
+  transform: translateY(-1px);
+}
+
+.betfred-btn--large {
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Manual Add Game Load Button - Compact modern design */
+#betfred-manual-add-load-game {
+  height: 42px !important;
+  padding: 0 16px !important;
+  margin-top: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%) !important;
+  border: 1px solid rgba(255, 215, 0, 0.3) !important;
+  border-radius: 8px !important;
+  color: #ffd700 !important;
+  font-weight: 500 !important;
+  font-size: 13px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+  transition: all 0.2s ease !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+#betfred-manual-add-load-game::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent) !important;
+  transition: left 0.4s ease !important;
+}
+
+#betfred-manual-add-load-game:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+  background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%) !important;
+  border-color: rgba(255, 215, 0, 0.5) !important;
+}
+
+#betfred-manual-add-load-game:hover::before {
+  left: 100% !important;
+}
+
+#betfred-manual-add-load-game:active {
+  transform: translateY(0) !important;
+  transition: all 0.1s ease !important;
+}
+
+#betfred-manual-add-load-game .betfred-icon {
+  font-size: 14px !important;
+  margin-right: 6px !important;
+}
+
+/* =======================
+   Firefox-Specific Optimizations
+   ======================= */
+
+/* Firefox Performance Enhancements */
+@-moz-document url-prefix() {
+  /* Firefox-specific optimizations */
+  .betfred-panel, .betfred-popup, .betfred-modal {
+    contain: layout style paint;
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  
+  /* Firefox scrollbar optimizations */
+  .betfred-select-dropdown {
+    scrollbar-width: thin;
+    scrollbar-color: #ffd700 #23244e;
+    overflow-anchor: none;
+  }
+  
+  /* Firefox animation optimizations */
+      .betfred-btn, .betfred-filter-btn {
+      will-change: transform;
+      transition: all 0.2s cubic-bezier(0.4, 0.0, 0.2, 1);
+    }
+  
+  /* Firefox backdrop-filter support - DISABLED TO PREVENT TEXT BLURRINESS */
+  .betfred-overlay {
+    backdrop-filter: none !important; /* Disabled for Firefox to prevent text blurriness */
+    -moz-backdrop-filter: none !important;
+  }
+  
+  /* Firefox rendering optimizations */
+  .betfred-stat-card, .betfred-game-stat-item {
+    contain: layout style;
+    will-change: transform;
+    transform: translateZ(0);
+  }
+  
+  /* Firefox memory optimizations */
+  .betfred-dropdown-content {
+    contain: layout style paint;
+    will-change: opacity, transform;
+  }
+  
+  /* Firefox performance hints */
+  .betfred-panel * {
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  
+  /* Firefox-specific transitions */
+  .betfred-panel {
+    transition: opacity 0.2s cubic-bezier(0.4, 0.0, 0.2, 1);
+  }
+  
+  /* Firefox memory management */
+  .betfred-hidden {
+    contain: strict;
+    display: none !important;
+  }
+  
+  /* Firefox layout containment */
+  .betfred-stats-panel {
+    contain: layout style;
+    will-change: transform;
+  }
+  
+  /* Firefox GPU acceleration */
+      .betfred-game-list, .betfred-provider-list {
+      will-change: transform;
+    }
+  
+  /* Firefox smooth scrolling */
+  .betfred-panel {
+    scroll-behavior: smooth;
+    -moz-scroll-behavior: smooth;
+  }
+  
+  /* Firefox text rendering - ENHANCED FOR CRISP TEXT */
+  .betfred-panel * {
+    text-rendering: optimizeLegibility;
+    -moz-text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Firefox-specific fix for stacked backdrop-filter blurriness */
+  .betfred-overlay:not(:first-of-type) {
+    backdrop-filter: none !important;
+    -moz-backdrop-filter: none !important;
+  }
+  
+  /* Firefox-specific fix for text blurriness in overlays */
+  .betfred-modal, .betfred-popup {
+    backdrop-filter: none !important;
+    -moz-backdrop-filter: none !important;
+  }
+  
+  /* Firefox-specific fix for close buttons */
+  .betfred-close-btn, .betfred-header-close-btn {
+    backdrop-filter: none !important;
+    -moz-backdrop-filter: none !important;
+  }
+  
+  /* Firefox-specific fix for provider selection text */
+  .betfred-full-providers-list .betfred-provider-stat-item .provider-name,
+  .provider-name,
+  .betfred-text-gold,
+  .betfred-text-white,
+  .betfred-text-gray,
+  .betfred-text-light-gray {
+    text-rendering: optimizeLegibility !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+  }
+  
+  /* Firefox-specific fix for fun facts text blurriness */
+  .betfred-stat-card div[style*="font-size:14px"] {
+    text-rendering: optimizeLegibility !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+  
+  /* Firefox image optimization */
+  .betfred-panel img {
+    image-rendering: -moz-optimize-contrast;
+    image-rendering: -moz-crisp-edges;
+  }
+  
+  /* Firefox focus optimization */
+  .betfred-btn:focus,
+  .betfred-filter-btn:focus {
+    outline: 2px solid #ffd700;
+    outline-offset: 2px;
+    -moz-outline-radius: 4px;
+  }
+  
+  /* Firefox focus state reset for filter buttons */
+  .betfred-filter-btn:not(.active):focus {
+    outline: none;
+    -moz-outline: none;
+  }
+  
+  /* Firefox active state optimization */
+  .betfred-filter-btn.active:focus {
+    outline: 2px solid #23244e;
+    outline-offset: 2px;
+    -moz-outline-radius: 4px;
+  }
+  
+  /* Firefox hover state optimization */
+      .betfred-btn:hover,
+    .betfred-filter-btn:hover {
+      transform: translateY(-1px);
+      will-change: transform;
+    }
+  
+      /* Firefox animation performance */
+    @keyframes betfred-fade-in {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  
+  .betfred-panel {
+    animation: betfred-fade-in 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+  }
+}
+
+/* Firefox scrollbar */
+.betfred-stats-panel {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* Firefox memory management */
+.betfred-hidden {
+  contain: strict;
+  display: none !important;
+}
+
+/* Firefox filter button state reset */
+.betfred-filter-btn {
+  user-select: none;
+  -moz-user-select: none;
+  appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  -moz-outline: none;
+}
+
+.betfred-filter-btn:not(.active) {
+  outline: none;
+  -moz-outline: none;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.13);
+  -moz-box-shadow: 0 2px 8px 0 rgba(0,0,0,0.13);
+}
+
+.betfred-filter-btn.active {
+  outline: none;
+  -moz-outline: none;
+  box-shadow: 0 4px 18px 0 rgba(255,215,0,0.18);
+  -moz-box-shadow: 0 4px 18px 0 rgba(255,215,0,0.18);
+}
+
+/* Firefox layout containment */
+
+/* Global font smoothing improvements */
+.betfred-panel {
+  font-smooth: always;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.betfred-modal,
+.betfred-section-block,
+.betfred-btn,
+.betfred-filter-btn {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Achievements Grid */
+.betfred-achievements-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 12px;
+}
+
+.betfred-achievement-badge {
+	background: linear-gradient(135deg, #3a3a6e 0%, #2a4a6e 100%);
+	border: 1px solid #4a4a8a;
+	border-radius: 14px;
+	padding: 12px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	gap: 8px;
+	transition: all 0.25s ease;
+}
+
+.betfred-achievement-badge:hover {
+	border-color: #ffd700;
+	transform: translateY(-2px);
+	box-shadow: 0 8px 20px rgba(255, 215, 0, 0.15);
+}
+
+.achievement-icon-circle {
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	background: transparent;
+	color: #ffd700;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 20px;
+	font-weight: 700;
+	flex-shrink: 0;
+	text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.achievement-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	gap: 2px;
+}
+
+.betfred-achievement-badge .achievement-title {
+	color: #ffd700;
+	font-weight: 700;
+	margin: 0;
+	font-size: 14px;
+	text-align: center;
+}
+
+.betfred-achievement-badge .achievement-desc {
+	color: #cccccc;
+	font-size: 12px;
+	margin: 0;
+	text-align: center;
+}
+
+/* Clickable Total Games Card */
+.betfred-stat-card.clickable {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.betfred-stat-card.clickable:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #4a4a8a 0%, #3a5a8a 100%);
+}
+
+.betfred-stat-card.clickable::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.betfred-stat-card.clickable:hover::before {
+  left: 100%;
+}
+
+/* All Games Modal Styles */
+.betfred-all-games-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 70vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar for all games list */
+.betfred-all-games-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.betfred-all-games-list::-webkit-scrollbar-track {
+  background: rgba(30,34,60,0.8);
+  border-radius: 4px;
+}
+
+.betfred-all-games-list::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #ffd700 0%, #ffe066 100%);
+  border-radius: 4px;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.betfred-all-games-list::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #ffe066 0%, #ffd700 100%);
+}
+
+.betfred-game-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 12px 24px 12px 16px;
+  margin-right: 16px;
+  background: linear-gradient(135deg, #2a2a4a 0%, #1a3a4a 100%);
+  border: 1px solid #3a3a6a;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  min-width: 0;
+  width: calc(100% - 16px);
+}
+
+.betfred-game-item:hover {
+  background: linear-gradient(135deg, #3a3a6a 0%, #2a4a6a 100%);
+  border-color: #4a4a8a;
+  transform: translateX(4px);
+}
+
+.betfred-game-item .game-info {
+  flex: 1;
+  min-width: 0;
+  text-align: center;
+  max-width: calc(100% - 150px);
+}
+
+.betfred-game-item .game-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 4px;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+.betfred-game-item .game-details {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  color: #b8c5d6;
+  flex-wrap: wrap;
+  min-width: 0;
+  margin-top: 4px;
+  justify-content: center;
+}
+
+.betfred-game-item .game-provider {
+  font-weight: 500;
+  color: #ffd700;
+}
+
+.betfred-game-item .game-rtp {
+  color: #4ade80;
+}
+
+.betfred-game-item .game-stake {
+  color: #fbbf24;
+}
+
+.betfred-game-item .game-stats {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 6px;
+  gap: 12px;
+  font-size: 12px;
+  color: #666;
+}
+
+.betfred-game-item .game-stats span {
+  background: rgba(0, 0, 0, 0.05);
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+/* RTP Extremes Modal Styles */
+.betfred-rtp-sections {
+  display: flex;
+  gap: 20px;
+  height: 100%;
+  overflow: hidden;
+  min-width: 0; /* Prevent flex children from overflowing */
+}
+
+.betfred-rtp-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0; /* Prevent flex children from overflowing */
+  max-width: 50%; /* Ensure each section takes maximum 50% */
+}
+
+.betfred-rtp-section-title {
+  margin: 0 0 15px 0;
+  padding: 10px;
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  border: 1px solid #475569;
+}
+
+.betfred-rtp-games-list {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-right: 4px;
+}
+
+.betfred-rtp-game-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  border-radius: 8px;
+  border: 1px solid #475569;
+  transition: all 0.3s ease;
+  min-width: 0;
+}
+
+.betfred-rtp-game-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  border-color: #64748b;
+}
+
+.rtp-rank {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  min-width: 40px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.betfred-rtp-game-item .game-info {
+  flex: 1;
+  min-width: 0;
+  text-align: center;
+  overflow: hidden; /* Prevent content from expanding beyond container */
+}
+
+.betfred-rtp-game-item .game-title {
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.betfred-rtp-game-item .game-title.clickable-game-title:hover {
+  color: #60a5fa;
+  text-decoration: underline;
+}
+
+.betfred-rtp-game-item .game-details {
+  display: flex;
+  gap: 12px;
+  font-size: 12px;
+  color: #94a3b8;
+  justify-content: center;
+}
+
+.betfred-rtp-game-item .game-provider {
+  color: #fbbf24;
+  font-weight: 500;
+}
+
+.betfred-rtp-game-item .game-stake {
+  color: #fbbf24;
+}
+
+.rtp-value {
+  font-weight: 700;
+  font-size: 14px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  flex-shrink: 0;
+  min-width: 70px;
+  text-align: center;
+}
+
+.rtp-value.high-rtp {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff;
+}
+
+.rtp-value.low-rtp {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: #ffffff;
+}
+
+/* RTP Extremes Responsive Layout */
+@media (max-width: 900px) {
+  .betfred-rtp-sections {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .betfred-rtp-section {
+    max-width: 100%;
+    flex: none;
+  }
+  
+  #betfred-rtp-extremes-panel {
+    max-width: 95vw !important;
+    width: 95% !important;
+  }
+}
+
+.betfred-game-item .game-actions {
+  flex-shrink: 0;
+  margin-left: 16px;
+  align-self: center;
+  min-width: 120px;
+}
+
+.betfred-remove-game-btn {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.betfred-remove-game-btn:hover {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+.betfred-remove-game-btn:active {
+  transform: translateY(0);
+}
+
+/* Restore button styles */
+.betfred-restore-game-btn {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.betfred-restore-game-btn:hover {
+  background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.betfred-restore-game-btn:active {
+  transform: translateY(0);
+}
+
+/* No removed games message */
+.no-removed-games {
+  text-align: center;
+  padding: 40px 20px;
+  color: #94a3b8;
+  font-size: 16px;
+  font-style: italic;
+}
+
+
+
+/* Confirmation Modal Styles */
+.betfred-confirmation-modal {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border: 2px solid #dc2626;
+  box-shadow: 0 20px 40px rgba(220, 38, 38, 0.2);
+}
+
+.betfred-confirmation-modal .betfred-modal-header {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  border-bottom: 1px solid #dc2626;
+}
+
+.betfred-confirmation-modal .betfred-modal-title {
+  color: #ffffff;
+}
+
+.betfred-confirmation-modal .betfred-modal-body {
+  padding: 24px;
+  text-align: center;
+}
+
+.betfred-confirmation-modal .betfred-modal-body p {
+  margin: 0 0 16px 0;
+  color: #ffffff;
+  line-height: 1.5;
+}
+
+.betfred-confirmation-modal .betfred-modal-body strong {
+  color: #ffd700;
+}
+
+.betfred-confirmation-modal .betfred-modal-footer {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  padding: 20px 24px;
+  border-top: 1px solid #3a3a6a;
+}
+
+.betfred-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 100px;
+}
+
+.betfred-btn-secondary {
+  background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+  color: #ffffff;
+}
+
+.betfred-btn-secondary:hover {
+  background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%);
+  transform: translateY(-1px);
+}
+
+.betfred-btn-danger {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  color: #ffffff;
+}
+
+.betfred-btn-danger:hover {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+.betfred-btn:active {
+  transform: translateY(0);
+}
+
+/* Bulk Actions Modal Styles */
+.betfred-bulk-actions-prompt {
+  margin-top: 20px;
+  margin-bottom: 18px;
+  text-align: center;
+  color: #ffffff;
+  font-size: 16px;
+}
+
+.betfred-bulk-actions-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.betfred-bulk-actions-buttons .betfred-btn {
+  flex: 1;
+  min-width: 200px;
+  max-width: 250px;
+}
+
+/* Fixed header structure for stats panels only */
+.betfred-stats-panel {
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+}
+
+.betfred-stats-panel .betfred-modal-header {
+  flex-shrink: 0 !important;
+  position: sticky !important;
+  top: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  border-bottom: none !important;
+}
+
+.betfred-stats-panel .betfred-modal-body {
+  flex: 1 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  padding: 20px !important;
+}
+
+
+
+
+

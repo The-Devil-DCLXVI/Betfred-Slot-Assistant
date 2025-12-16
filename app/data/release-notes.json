@@ -1,0 +1,356 @@
+{
+  "currentVersion": "1.0.8",
+  "lastUpdated": "2025-01-15",
+  "releases": [
+    {
+      "version": "1.0.8",
+      "date": "2025-01-15",
+      "title": "Random Controls & Stability",
+      "highlights": [
+        "🎛️ Random cooldown toggle + provider fallback",
+        "🚫 Bingo exclusions applied to all Random buttons",
+        "🔗 Updated links to PunkSquad",
+        "🆕 New Game card reads embedded dates"
+      ],
+      "features": [
+        {
+          "category": "🎛️ Random Controls",
+          "items": [
+            "Toggle to prevent repeat picks with adjustable cooldown (0-168h)",
+            "Both main and floating Random respect the setting"
+          ]
+        }
+      ],
+      "bugFixes": [
+        "Main Random button now honors Bingo disable and provider fallback",
+        "Random selection now avoids same game back-to-back even on floating button",
+        "Better error/empty-state toasts when no games match filters"
+      ],
+      "technicalNotes": [
+        "New Game card prefers embedded dates for recency",
+        "Links updated to punksquad.com"
+      ]
+    },
+    {
+      "version": "1.0.7",
+      "date": "2025-01-15",
+      "title": "Database Editor + Cleanup",
+      "highlights": [
+        "📝 Database Editor in Reset & Maintenance",
+        "🧹 Removed Achievements feature from UI and code"
+      ],
+      "features": [
+        {
+          "category": "📝 Database Editor",
+          "items": [
+            "Edit Title, Provider, RTP and Min Stake across the database",
+            "A–Z filter bar and provider filter for fast navigation",
+            "Single Save action with validation and immediate UI refresh"
+          ]
+        }
+      ],
+      "bugFixes": [
+        "Fixed editor init edge cases when database wasn't preloaded",
+        "Refined header layout and styling for better scrolling"
+      ],
+      "technicalNotes": [
+        "Removed achievements UI, exports, and generator function",
+        "No data migration required; storage keys unchanged"
+      ]
+    },
+    {
+      "version": "1.0.6",
+      "date": "2025-01-15",
+      "title": "Database Update & Performance Improvements",
+      "highlights": [
+        "🗄️ Database Update - Latest game collection",
+        "🔧 Code Quality Improvements",
+        "🐛 Bug Fixes & Stability"
+      ],
+      "features": [
+        {
+          "category": "🗄️ Database Updates",
+          "items": [
+            "Updated game database with latest Betfred releases",
+            "New games added to the comprehensive collection",
+            "Updated RTP values for existing games where changes occurred",
+            "Provider information updates for accuracy"
+          ]
+        },
+        {
+          "category": "🔧 Technical Improvements",
+          "items": [
+            "Enhanced error handling for better stability",
+            "Improved performance in game loading and filtering",
+            "Better memory management for smoother operation",
+            "Optimized storage operations for faster data access"
+          ]
+        }
+      ],
+      "bugFixes": [
+        "Fixed occasional crashes during database updates",
+        "Resolved filter cache issues that could cause incorrect game counts",
+        "Improved handling of edge cases in game search functionality",
+        "Fixed minor UI inconsistencies in the options panel"
+      ],
+      "technicalNotes": [
+        "Database update logic in storage.js",
+        "Enhanced error handling in error-handling.js",
+        "Performance optimizations in game-management.js",
+        "Improved validation in validation.js"
+      ]
+    },
+    {
+      "version": "1.0.5",
+      "date": "2025-10-03",
+      "title": "Random Button Controls & Stats Consistency",
+      "highlights": [
+        "🎛️ Random Button Area Controls",
+        "🧭 Default Bingo Exclusion",
+        "📊 Stats Consistency Fixes"
+      ],
+      "features": [
+        {
+          "category": "🎛️ Random Button Behaviour",
+          "items": [
+            "New options to disable Random in Games, Casino, Vegas, and Bingo",
+            "Bingo is disabled by default (recommended)",
+            "Applies to both the main Random button and floating Random button"
+          ]
+        },
+        {
+          "category": "🔔 User Feedback",
+          "items": [
+            "Helpful toast when Random can’t find games due to exclusions",
+            "Clear guidance to enable areas in Preferences"
+          ]
+        },
+        {
+          "category": "📊 Statistics",
+          "items": [
+            "Aligned Games Played and Total Plays with provider breakdown",
+            "Uses unified play data for accurate counts"
+          ]
+        }
+      ],
+      "bugFixes": [
+        "Fixed mismatched Games Played vs Provider Breakdown totals",
+        "Improved handling when Random areas exclude all content"
+      ],
+      "technicalNotes": [
+        "Options UI additions in options-panel.js",
+        "Random behaviour logic in shared-utils.js",
+        "Stats panel consistency adjustments in stats-panel.js"
+      ]
+    },
+    {
+      "version": "1.0.4",
+      "date": "2025-10-02",
+      "title": "Interactive Statistics Dashboard",
+      "highlights": [
+        "📊 Interactive Top 10 Lists",
+        "🎯 Clickable Stats Cards",
+        "🎨 Enhanced Modal Design",
+        "🔧 Consistent Game Counts"
+      ],
+      "features": [
+        {
+          "category": "📊 Enhanced Statistics Dashboard",
+          "items": [
+            "Click 'Longest Single Session' card to view top 10 longest gaming sessions",
+            "Click 'Most Time Spent Playing' card to view top 10 most-played games by total time",
+            "Beautiful ranking modals with gold/silver/bronze badges for top performers",
+            "Rich game information showing title, provider, and formatted play time",
+            "Direct game links from top 10 lists for easy access"
+          ]
+        },
+        {
+          "category": "🎨 Visual Enhancements",
+          "items": [
+            "Improved stats card design with better hover effects",
+            "Consistent styling across all modal dialogs",
+            "Enhanced visual hierarchy and information display",
+            "Responsive modal design with proper spacing and borders"
+          ]
+        },
+        {
+          "category": "🔧 Technical Improvements",
+          "items": [
+            "Fixed game count discrepancies between stats dashboard and options panel",
+            "Aligned database statistics across all interface elements",
+            "Enhanced modal system with reusable components",
+            "Improved session data calculation and display accuracy"
+          ]
+        }
+      ],
+      "bugFixes": [
+        "Fixed mismatched game counts between stats dashboard and options panel on fresh installs",
+        "Corrected 'Complete Database' modal to show accurate game counts",
+        "Improved accuracy of session duration and play time statistics",
+        "Resolved inconsistent data display across different panels"
+      ],
+      "technicalNotes": [
+        "Added interactive click handlers for stats cards in stats-panel.js",
+        "Implemented reusable modal components with consistent styling",
+        "Enhanced data computation for top 10 rankings and statistics",
+        "Improved session tracking and duration formatting"
+      ]
+    },
+    {
+      "version": "1.0.2",
+      "date": "2025-09-17",
+      "title": "Smarter Search: Strict + Typo Tolerance",
+      "highlights": [
+        "🔍 1-Typo Tolerance",
+        "🧠 Stricter Long-Word Matching",
+        "⚖️ Balanced Short-Word Flexibility"
+      ],
+      "features": [
+        {
+          "category": "🔍 Search Enhancements",
+          "items": [
+            "Added 1-edit typo tolerance for words ≥ 4 characters (e.g., 'gost' → 'ghost')",
+            "Kept strict containment rules for long words to avoid irrelevant matches",
+            "Maintained permissive handling for short terms like '7s', '88'"
+          ]
+        }
+      ],
+      "bugFixes": [
+        "Prevented long-word searches (e.g., 'goonies') from matching unrelated titles (e.g., 'go fish')"
+      ],
+      "technicalNotes": [
+        "Updated search logic in game-management, options-panel, bulk-keyword-operations, shared-utils"
+      ]
+    },
+    {
+      "version": "1.0.1",
+      "date": "2025-09-13",
+      "title": "Enhanced Search & Visual Improvements",
+      "highlights": [
+        "🔍 Auto-Open Search Dropdown",
+        "🎨 Fixed Firefox Blurry Text",
+        "👁️ Better Hover Visibility",
+        "⚡ Improved Performance"
+      ],
+      "features": [
+        {
+          "category": "🔍 Enhanced Search Experience",
+          "items": [
+            "Auto-open game dropdown when typing in search box",
+            "Real-time filtered results as you type",
+            "Improved search algorithm for better matching",
+            "Smart handling of apostrophes and special characters"
+          ]
+        },
+        {
+          "category": "🎨 Visual Enhancements",
+          "items": [
+            "Fixed blurry text issues in Firefox",
+            "Improved hover effects on provider cards",
+            "Better text visibility on export lists",
+            "Smoother animations without performance issues"
+          ]
+        },
+        {
+          "category": "🔧 Technical Improvements",
+          "items": [
+            "Removed CSS scaling effects that caused Firefox blur",
+            "Optimized hover states for better performance",
+            "Enhanced cross-browser compatibility",
+            "Improved accessibility and contrast"
+          ]
+        }
+      ],
+      "bugFixes": [
+        "Fixed blurry text in Firefox caused by CSS scaling effects",
+        "Improved visibility of game counts when hovering over provider buttons",
+        "Enhanced text contrast on provider cards during hover",
+        "Fixed search matching for games with apostrophes (e.g., '7's Deluxe')"
+      ],
+      "technicalNotes": [
+        "Removed transform: scale() effects that caused Firefox rendering issues",
+        "Added auto-open functionality for search dropdown",
+        "Optimized hover animations for better performance",
+        "Enhanced search algorithm with better word boundary handling"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "date": "2025-09-13",
+      "title": "Initial Release",
+      "highlights": [
+        "🎉 Complete Game Management Solution",
+        "🔍 Advanced Search Functionality",
+        "📊 Statistics & Analytics",
+        "🎨 Modern User Interface"
+      ],
+      "features": [
+        {
+          "category": "🎯 Complete Game Management Solution",
+          "items": [
+            "Welcome to Betfred Slot Assistant - the ultimate browser extension for managing your Betfred slot gaming experience",
+            "Comprehensive tool providing advanced game management, filtering, favorites, statistics, and much more",
+            "Access to thousands of Betfred games with smart organization",
+            "Cross-browser support for Chrome and Firefox"
+          ]
+        },
+        {
+          "category": "🔍 Advanced Search Functionality",
+          "items": [
+            "Title-only search that exclusively targets game titles for accurate results",
+            "Smart apostrophe handling: '7s deluxe' finds '7's deluxe' seamlessly",
+            "Intelligent word matching: 'clanks' finds 'Professor Clank's 10k Ways'",
+            "Real-time results with instant search as you type and debounced input",
+            "Case insensitive search that works regardless of capitalization"
+          ]
+        },
+        {
+          "category": "🎮 Game Management Features",
+          "items": [
+            "Comprehensive database with access to thousands of Betfred games",
+            "Smart filtering by provider, category, and custom criteria",
+            "Favorites system to mark and manage your favorite games",
+            "Bulk operations for managing multiple games simultaneously",
+            "Custom filters for creating personalized game filters"
+          ]
+        },
+        {
+          "category": "📊 Statistics & Analytics",
+          "items": [
+            "Play time tracking to monitor your gaming sessions",
+            "Game statistics to track most played games and session durations",
+            "Performance metrics with detailed gaming analytics",
+            "Export data functionality for backup and data portability"
+          ]
+        },
+        {
+          "category": "🎨 User Interface",
+          "items": [
+            "Modern design with clean, intuitive interface",
+            "Responsive layout that works seamlessly on all screen sizes",
+            "Dark/light themes with customizable appearance",
+            "Full accessibility support including screen reader compatibility"
+          ]
+        },
+        {
+          "category": "🛠️ Technical Features",
+          "items": [
+            "Cross-browser support for Chrome and Firefox",
+            "Fast performance optimized for speed and efficiency",
+            "Secure local data storage with privacy protection",
+            "Auto-updates for seamless extension updates"
+          ]
+        }
+      ],
+      "bugFixes": [
+        "Initial release - no previous bugs to fix"
+      ],
+      "technicalNotes": [
+        "Built with modern web technologies for optimal performance",
+        "Local storage implementation for privacy-first approach",
+        "Debounced search input for smooth user experience",
+        "Comprehensive game database with real-time updates"
+      ]
+    }
+  ]
+}
