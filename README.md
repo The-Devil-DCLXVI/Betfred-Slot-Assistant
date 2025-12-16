@@ -1,4 +1,4 @@
-# Betfred Slot Assistant (Unofficial) — Desktop App
+# Betfred Slot Assistant — Desktop App
 
 This is an Electron desktop app that loads Betfred.com and injects the existing **Betfred Slot Assistant** bundle (`main.iife.js`) + CSS (`styles.css`).
 
