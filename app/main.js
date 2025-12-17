@@ -1,8 +1,9 @@
-const { app, BrowserWindow, ipcMain, protocol, Menu, dialog, Tray, nativeImage } = require('electron');
+const { app, BrowserWindow, ipcMain, protocol, Menu, dialog, Tray, nativeImage, shell } = require('electron');
 const path = require('path');
 const fs = require('fs');
 const Store = require('electron-store');
 const { autoUpdater } = require('electron-updater');
+const keytar = require('keytar');
 
 let mainWindow;
 let tray = null;
@@ -11,25 +12,44 @@ let isQuitting = false;
 const store = new Store();
 const winStateStore = new Store({ name: 'window-state' });
 
-const APP_NAME = 'Betfred Slot Assistant (Desktop)';
+const APP_NAME = 'Betfred Slot Assistant';
 const APP_VERSION = app.getVersion();
 const DEBUG = process.env.BFAPP_DEBUG === '1';
 
-// Closing the window will hide it to the tray instead of quitting.
-const MINIMIZE_TO_TRAY = true;
+// If true, closing the window hides to tray (keeps task running). User requested full exit.
+const MINIMIZE_TO_TRAY = false;
+
+/**
+ * External URLs that should open in the user's default browser.
+ * Keep this to your footer links so Betfred navigation stays inside the app.
+ */
+const EXTERNAL_URL_PREFIXES = [
+  'https://punksquad.com',
+  'https://www.punksquad.com',
+  'https://youtube.com/@PUNKslots',
+  'https://www.youtube.com/@PUNKslots',
+  'https://youtu.be/'
+];
+
+function isExternalUrl(url) {
+  if (!url || typeof url !== 'string') return false;
+  return EXTERNAL_URL_PREFIXES.some((prefix) => url.startsWith(prefix));
+}
 
 // Prevent multiple instances fighting over storage/session.
 const gotLock = app.requestSingleInstanceLock();
 if (!gotLock) {
   app.quit();
-} else {
-  app.on('second-instance', () => {
-    if (!mainWindow) return;
-    if (mainWindow.isMinimized()) mainWindow.restore();
-    mainWindow.show();
-    mainWindow.focus();
-  });
+  // IMPORTANT: stop executing the rest of this file
+  process.exit(0);
 }
+
+app.on('second-instance', () => {
+  if (!mainWindow) return;
+  if (mainWindow.isMinimized()) mainWindow.restore();
+  mainWindow.show();
+  mainWindow.focus();
+});
 
 // Hide noisy updater logs unless debugging
 autoUpdater.logger = null;
@@ -55,8 +75,8 @@ function readFileSafe(p) {
 
 /**
  * bfapp:// protocol
- * - bfapp://assets/... -> BFApp/app/assets/...
- * - bfapp://...        -> BFApp/app/inject/...
+ * - bfapp://assets/... -> app/assets/...
+ * - bfapp://...        -> app/inject/...
  */
 function registerBfappProtocol() {
   protocol.registerFileProtocol('bfapp', (request, callback) => {
@@ -89,10 +109,30 @@ async function ensureShim(win) {
       window.chrome.storage = window.chrome.storage || {};
       window.chrome.storage.local = window.chrome.storage.local || {};
 
-      window.chrome.storage.local.get = (keys, cb) => bridge.storageGet(keys).then(res => cb && cb(res));
-      window.chrome.storage.local.set = (obj, cb) => bridge.storageSet(obj).then(() => cb && cb());
-      window.chrome.storage.local.remove = (keys, cb) => bridge.storageRemove(keys).then(() => cb && cb());
-      window.chrome.storage.local.clear = (cb) => bridge.storageClear().then(() => cb && cb());
+window.chrome.storage.local.get = (keys, cb) => {
+  const p = bridge.storageGet(keys).then((res) => res || {});
+  if (typeof cb === 'function') { p.then((r) => cb(r)); return; }
+  return p;
+};
+
+window.chrome.storage.local.set = (obj, cb) => {
+  const p = bridge.storageSet(obj).then(() => undefined);
+  if (typeof cb === 'function') { p.then(() => cb()); return; }
+  return p;
+};
+
+window.chrome.storage.local.remove = (keys, cb) => {
+  const p = bridge.storageRemove(keys).then(() => undefined);
+  if (typeof cb === 'function') { p.then(() => cb()); return; }
+  return p;
+};
+
+window.chrome.storage.local.clear = (cb) => {
+  const p = bridge.storageClear().then(() => undefined);
+  if (typeof cb === 'function') { p.then(() => cb()); return; }
+  return p;
+};
+
 
       // runtime messaging + getURL + getManifest
       window.chrome.runtime = window.chrome.runtime || {};
@@ -172,6 +212,25 @@ async function injectBundleOnce(win) {
     log('[injectBundleOnce] Bundle injected OK on', win.webContents.getURL());
   } catch (e) {
     err('[injectBundleOnce] failed:', e);
+    return;
+  }
+
+  // Inject password helper AFTER the main bundle (separate file; keeps main.iife.js untouched)
+  const pwCode = readFileSafe(path.join(__dirname, 'inject', 'password-helper.iife.js'));
+  if (!pwCode) return;
+
+  try {
+    await win.webContents.executeJavaScript(`
+      (() => {
+        if (window.__BFAPP_PW_HELPER_INJECTED__) return;
+        window.__BFAPP_PW_HELPER_INJECTED__ = true;
+        try { ${pwCode} }
+        catch (e) { console.error('[BF Desktop] Password helper error:', e); }
+      })();
+    `);
+    log('[injectBundleOnce] Password helper injected OK on', win.webContents.getURL());
+  } catch (e) {
+    err('[injectBundleOnce] Password helper inject failed:', e);
   }
 }
 
@@ -262,7 +321,6 @@ function setAppMenu() {
 }
 
 function createTray() {
-  // Try a dedicated tray icon first, fall back to any existing asset.
   const candidates = [
     path.join(__dirname, 'assets', 'tray.png'),
     path.join(__dirname, 'assets', 'external-link-icon.png'),
@@ -297,7 +355,6 @@ function createTray() {
   ]);
 
   tray.setContextMenu(contextMenu);
-
   tray.on('double-click', () => {
     if (!mainWindow) return;
     mainWindow.show();
@@ -306,19 +363,29 @@ function createTray() {
 }
 
 function setupAutoUpdater() {
-  // electron-updater uses GitHub releases when configured in package.json
   autoUpdater.autoDownload = false;
+
+  // Track whether the check was user-initiated
+  let userInitiatedCheck = false;
+
+  // Wrap checkForUpdates so we know when the user clicked it
+  const originalCheck = autoUpdater.checkForUpdates.bind(autoUpdater);
+  autoUpdater.checkForUpdates = async () => {
+    userInitiatedCheck = true;
+    return originalCheck();
+  };
 
   autoUpdater.on('update-available', async (info) => {
     const result = await dialog.showMessageBox({
       type: 'info',
       title: 'Update available',
-      message: `A new version is available (${info && info.version ? info.version : 'unknown'}).`,
+      message: `A new version is available (${info?.version || 'unknown'}).`,
       detail: 'Download and install now?',
       buttons: ['Download', 'Later'],
       defaultId: 0,
       cancelId: 1
     });
+
     if (result.response === 0) {
       try {
         await autoUpdater.downloadUpdate();
@@ -327,10 +394,24 @@ function setupAutoUpdater() {
           type: 'error',
           title: 'Update download failed',
           message: 'Could not download the update.',
-          detail: String(e && e.message ? e.message : e)
+          detail: String(e?.message || e)
         });
       }
     }
+  });
+
+  autoUpdater.on('update-not-available', () => {
+    // Only show this when the user explicitly clicked "Check for updates"
+    if (!userInitiatedCheck) return;
+
+    dialog.showMessageBox({
+      type: 'info',
+      title: 'No updates available',
+      message: 'You’re up to date',
+      detail: `${APP_NAME} v${APP_VERSION} is the latest version.`
+    });
+
+    userInitiatedCheck = false;
   });
 
   autoUpdater.on('update-downloaded', async () => {
@@ -343,6 +424,7 @@ function setupAutoUpdater() {
       defaultId: 0,
       cancelId: 1
     });
+
     if (result.response === 0) {
       autoUpdater.quitAndInstall();
     }
@@ -381,15 +463,35 @@ function createWindow() {
       contextIsolation: true,
       nodeIntegration: false,
       sandbox: false,
+      devTools: true
     },
   });
 
   if (state.isMaximized) mainWindow.maximize();
 
-  setAppMenu();
-  if (MINIMIZE_TO_TRAY) {
-    createTray();
+  if (DEBUG || !app.isPackaged) {
+    mainWindow.webContents.openDevTools({ mode: 'detach' });
   }
+
+  setAppMenu();
+  if (MINIMIZE_TO_TRAY) createTray();
+
+  // Open matching URLs in the user's default browser (popups / target=_blank)
+  mainWindow.webContents.setWindowOpenHandler(({ url }) => {
+    if (isExternalUrl(url)) {
+      shell.openExternal(url);
+      return { action: 'deny' };
+    }
+    return { action: 'allow' };
+  });
+
+  // Open matching URLs in the user's default browser (normal navigation)
+  mainWindow.webContents.on('will-navigate', (event, url) => {
+    if (isExternalUrl(url)) {
+      event.preventDefault();
+      shell.openExternal(url);
+    }
+  });
 
   // Keep injections working for SPA + navigations
   mainWindow.webContents.on('did-finish-load', () => onNavigation(mainWindow));
@@ -399,28 +501,11 @@ function createWindow() {
   // Save window state
   mainWindow.on('resize', () => saveWindowState(mainWindow));
   mainWindow.on('move', () => saveWindowState(mainWindow));
-  mainWindow.on('close', (e) => {
-    saveWindowState(mainWindow);
 
-    // Minimize-to-tray behaviour (unless the user is explicitly quitting)
-    if (MINIMIZE_TO_TRAY && !isQuitting) {
-      e.preventDefault();
-      mainWindow.hide();
-    }
+  // Close behaviour: user requested full quit on close
+  mainWindow.on('close', () => {
+    isQuitting = true;
   });
-
-  // Optional dev logging of page console
-  if (DEBUG) {
-    mainWindow.webContents.on('console-message', (event, ...args) => {
-      if (args.length === 1 && args[0] && typeof args[0] === 'object') {
-        const { level, message, lineNumber, sourceId } = args[0];
-        warn(`[PAGE ${level}] ${message} (${sourceId}:${lineNumber})`);
-        return;
-      }
-      const [level, message, line, sourceId] = args;
-      warn(`[PAGE ${level}] ${message} (${sourceId}:${line})`);
-    });
-  }
 
   mainWindow.loadURL('https://www.betfred.com/games');
 
@@ -428,6 +513,14 @@ function createWindow() {
     mainWindow = null;
   });
 }
+
+/* -------------------- IPC: external links -------------------- */
+ipcMain.handle('shell:openExternal', async (_e, url) => {
+  if (!url || typeof url !== 'string') return false;
+  if (!/^https?:\/\//i.test(url)) return false;
+  await shell.openExternal(url);
+  return true;
+});
 
 /* -------------------- IPC: storage -------------------- */
 ipcMain.handle('storage:get', async (_e, keys) => {
@@ -465,6 +558,44 @@ ipcMain.handle('storage:clear', async () => {
   store.clear();
 });
 
+/* -------------------- IPC: updater -------------------- */
+ipcMain.handle('updater:check', async () => {
+  try {
+    await autoUpdater.checkForUpdates();
+    return { ok: true };
+  } catch (e) {
+    return { ok: false, error: String(e && e.message ? e.message : e) };
+  }
+});
+
+
+/* -------------------- IPC: credentials (keytar) -------------------- */
+const CREDS_SERVICE = 'Betfred Slot Assistant';
+const accountKey = (username) => `betfred:${String(username || '').trim().toLowerCase()}`;
+
+ipcMain.handle('creds:save', async (_e, username, password) => {
+  if (typeof username !== 'string' || typeof password !== 'string') return false;
+  const u = username.trim();
+  const p = password;
+  if (!u || !p) return false;
+  await keytar.setPassword(CREDS_SERVICE, accountKey(u), p);
+  return true;
+});
+
+ipcMain.handle('creds:load', async (_e, username) => {
+  if (typeof username !== 'string') return null;
+  const u = username.trim();
+  if (!u) return null;
+  return await keytar.getPassword(CREDS_SERVICE, accountKey(u));
+});
+
+ipcMain.handle('creds:delete', async (_e, username) => {
+  if (typeof username !== 'string') return false;
+  const u = username.trim();
+  if (!u) return false;
+  return await keytar.deletePassword(CREDS_SERVICE, accountKey(u));
+});
+
 /* -------------------- IPC: runtime messaging -------------------- */
 ipcMain.handle('runtime:sendMessage', async (_e, message) => {
   if (mainWindow) mainWindow.webContents.send('runtime:message', message);
@@ -477,11 +608,13 @@ app.whenReady().then(() => {
   setupAutoUpdater();
   createWindow();
 
-  // Check for updates on startup. Will do nothing until you publish releases.
-  try {
-    autoUpdater.checkForUpdates();
-  } catch (e) {
-    if (DEBUG) warn('autoUpdater check failed', e);
+  // Only check for updates automatically when installed.
+  if (app.isPackaged) {
+    try {
+      autoUpdater.checkForUpdates();
+    } catch (e) {
+      if (DEBUG) warn('autoUpdater check failed', e);
+    }
   }
 });
 

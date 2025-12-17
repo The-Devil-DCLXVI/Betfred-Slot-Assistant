@@ -1,11 +1,11 @@
 {
   "name": "betfred-slot-assistant-desktop",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "description": "Independent third-party desktop companion app that enhances the Betfred web experience.",
   "main": "app/main.js",
-  "author": "You",
+  "author": "The-Devil-DCLXVI",
   "license": "UNLICENSED",
-  "private": true,
+  "private": false,
   "scripts": {
     "start": "electron .",
     "start:debug": "cross-env BFAPP_DEBUG=1 electron .",
@@ -15,7 +15,8 @@
   },
   "dependencies": {
     "electron-store": "^8.2.0",
-    "electron-updater": "^6.6.2"
+    "electron-updater": "^6.6.2",
+    "keytar": "^7.9.0"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
@@ -23,11 +24,12 @@
     "electron-builder": "^24.13.3"
   },
   "build": {
-    "appId": "com.yourname.betfred-slot-assistant",
-    "productName": "Betfred Slot Assistant (Unofficial)",
-    "copyright": "Copyright © 2025",
+    "appId": "com.the-devil-dclxvi.betfred-slot-assistant",
+    "productName": "Betfred Slot Assistant",
+    "copyright": "Copyright \u00a9 2025",
     "files": [
       "app/**/*",
+      "build/**/*",
       "package.json"
     ],
     "directories": {
@@ -37,21 +39,32 @@
     "publish": [
       {
         "provider": "github",
-        "owner": "YOUR_GITHUB_USERNAME",
-        "repo": "YOUR_REPO_NAME"
+        "owner": "The-Devil-DCLXVI",
+        "repo": "Betfred-Slot-Assistant"
       }
     ],
     "win": {
+      "icon": "build/icon.ico",
       "target": [
         "nsis"
       ]
     },
+    "nsis": {
+      "deleteAppDataOnUninstall": true,
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Betfred Slot Assistant"
+    },
     "mac": {
+      "icon": "build/icon.icns",
       "target": [
         "dmg"
       ]
     },
     "linux": {
+      "icon": "build/icon.png",
       "target": [
         "AppImage",
         "deb"
